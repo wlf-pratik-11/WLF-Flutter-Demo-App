@@ -37,6 +37,9 @@ dependencies:
 
   google_fonts: any
   path_provider: any
+  intl_phone_field: any
+  intl: any
+  email_validator: any
 
 dev_dependencies:
   flutter_test:

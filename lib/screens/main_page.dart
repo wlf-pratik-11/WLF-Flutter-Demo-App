@@ -15,7 +15,7 @@ class MainPage extends StatelessWidget {
       "route":"Home101()"
     },
     {
-      "name":"TabBar and Dialog Demo",
+      "name":"Tabbar and Dialog Demo",
       "route":TabbarDemoPage()
     },
   ];
