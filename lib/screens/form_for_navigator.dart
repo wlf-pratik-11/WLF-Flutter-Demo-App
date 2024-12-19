@@ -183,7 +183,10 @@ class _FormForNavigatorState extends State<FormForNavigator> {
                   ),
                   validator: (value) {
                     // Real-time email validation
-                    if (!EmailValidator.validate(_email.text)) {
+                    if(_email.text.isEmpty){
+                      return "Enter Your Email";
+                    }
+                    else if (!EmailValidator.validate(_email.text)) {
                       return "Invalid Email..!";
                     }
                   },

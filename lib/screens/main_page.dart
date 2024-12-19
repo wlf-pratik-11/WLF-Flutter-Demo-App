@@ -5,6 +5,7 @@ import 'package:main_app_demo/commons/multi_language_strings.dart';
 import 'package:main_app_demo/screens/tabbar_demo_page.dart';
 
 import '../commons/my_colors.dart';
+import 'blockDemo/block_screen.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -18,6 +19,10 @@ class MainPage extends StatelessWidget {
       "name":"Tabbar and Dialog Demo",
       "route":TabbarDemoPage()
     },
+    {
+      "name":"Block Arch Demo",
+      "route": BlockScreen()
+    }
   ];
 
   @override
