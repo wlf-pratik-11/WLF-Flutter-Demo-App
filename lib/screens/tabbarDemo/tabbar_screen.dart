@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:main_app_demo/screens/form_for_navigator.dart';
+import 'package:main_app_demo/screens/tabbarDemo/formForNavigatorDemo/form_for_navigator_screen.dart';
+import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen_block.dart';
 
-import '../commons/common_functions.dart';
-import '../commons/multi_language_strings.dart';
-import '../commons/my_colors.dart';
+import '../../commons/common_functions.dart';
+import '../../commons/multi_language_strings.dart';
+import '../../commons/my_colors.dart';
 
 class TabbarDemoPage extends StatefulWidget {
   const TabbarDemoPage({super.key});
@@ -14,10 +15,8 @@ class TabbarDemoPage extends StatefulWidget {
 }
 
 class _TabbarDemoPageState extends State<TabbarDemoPage> {
-  String name = '';
-  String mobile = '';
-  String birthDate = '';
-  String email = '';
+
+  final TabbarScreenBlock _bloc = TabbarScreenBlock();
 
   @override
   Widget build(BuildContext context) {
@@ -49,25 +48,25 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                   ),
                 ),
                 Tab(
-                    // icon: Icon(
-                    //   Icons.account_balance,
-                    //   color: Colors.white,
-                    //   size: 30,
-                    // ),
+                  // icon: Icon(
+                  //   Icons.account_balance,
+                  //   color: Colors.white,
+                  //   size: 30,
+                  // ),
                     child: Text(
-                  "Bottom Sheet",
-                  style: TextStyle(color: Colors.white),
-                )),
+                      "Bottom Sheet",
+                      style: TextStyle(color: Colors.white),
+                    )),
                 Tab(
-                    // icon: Icon(
-                    //   Icons.account_box,
-                    //   color: Colors.white,
-                    //   size: 30,
-                    // ),
+                  // icon: Icon(
+                  //   Icons.account_box,
+                  //   color: Colors.white,
+                  //   size: 30,
+                  // ),
                     child: Text(
-                  "Navigator",
-                  style: TextStyle(color: Colors.white),
-                ))
+                      "Navigator",
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
               indicatorColor: Colors.white,
               indicatorSize: TabBarIndicatorSize.tab,
@@ -119,7 +118,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                   onPressed: () {
                     showModalBottomSheet(
                       sheetAnimationStyle:
-                          AnimationStyle(duration: Duration(seconds: 1)),
+                      AnimationStyle(duration: Duration(seconds: 1)),
                       context: context,
                       builder: (context) {
                         return Container(
@@ -144,7 +143,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                                   },
                                   child: Padding(
                                     padding:
-                                        const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                                    const EdgeInsets.fromLTRB(0, 40, 0, 0),
                                     child: Text("Close",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 18)),
@@ -172,7 +171,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                   padding: const EdgeInsets.fromLTRB(0, 35, 0, 25),
                   child: ElevatedButton(
                       onPressed: () {
-                        _navigateAndGetDAtaFromForm(context);
+                        _bloc.navigateAndGetDAtaFromForm(context);
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: MyColors.darkBlue,
@@ -202,38 +201,43 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Name : ${name}",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Mobile No : $mobile",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Birth Date : $birthDate",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Email : $email",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ],
+                  child: StreamBuilder(
+                    stream: _bloc.myStream,
+                    builder: (context, myStream) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Name :"+ myStream.,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Mobile No :"+_bloc.mobile,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Birth Date :"+_bloc.birthDate,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Email :"+_bloc.email,
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
                 Padding(
@@ -265,24 +269,5 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
             )
           ]),
         ));
-  }
-
-  Future<void> _navigateAndGetDAtaFromForm(BuildContext context) async {
-    final result = await Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FormForNavigator(),
-        ));
-
-    if (!context.mounted) return;
-
-    if (result != null) {
-      setState(() {
-        name = result['name'];
-        mobile = result['mobile'];
-        birthDate = result['birthDate'];
-        email = result['email'];
-      });
-    }
   }
 }

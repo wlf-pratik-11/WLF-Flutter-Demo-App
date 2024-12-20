@@ -40,7 +40,7 @@ dependencies:
   intl_phone_field: any
   intl: any
   email_validator: any
-
+  rxdart: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

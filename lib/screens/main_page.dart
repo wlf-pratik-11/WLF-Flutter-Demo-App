@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/multi_language_strings.dart';
-import 'package:main_app_demo/screens/tabbar_demo_page.dart';
+import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen.dart';
 
 import '../commons/my_colors.dart';
 import 'blockDemo/block_screen.dart';
