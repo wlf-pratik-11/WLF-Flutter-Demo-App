@@ -210,7 +210,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Name :"+ myStream.,
+                              "Name :",
                               style: TextStyle(fontSize: 20),
                             ),
                           ),

@@ -2,26 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/multi_language_strings.dart';
+import 'package:main_app_demo/screens/signUpScreen/signup_screen.dart';
 import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen.dart';
 
 import '../commons/my_colors.dart';
-import 'blockDemo/block_screen.dart';
+import 'changeScreensDemo/content_holder_screen.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   static const List menuItem = [
     {
-      "name":"Home",
-      "route":"Home101()"
-    },
-    {
       "name":"Tabbar and Dialog Demo",
       "route":TabbarDemoPage()
     },
     {
-      "name":"Block Arch Demo",
-      "route": BlockScreen()
+      "name":"Practice Screen",
+      "route": ContentHolderScreen()
+    },
+    {
+      "name":"Sign Up Screen",
+      "route": SignupScreen()
     }
   ];
 
