@@ -78,10 +78,7 @@ class _ContentHolderScreenState extends State<ContentHolderScreen> {
                                           "Prev",
                                           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 25),
                                         )
-                                      : Text(
-                                          "Prev",
-                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black26, fontSize: 25),
-                                        ),
+                                      : Spacer(),
                                   splashColor: Colors.transparent,
                                   onTap: () {
                                     _bloc.selectSlider(true, position.data ?? _bloc.dataLst.first);

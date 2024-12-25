@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        fontFamily: GoogleFonts.outfit().fontFamily,
+        fontFamily: GoogleFonts.nunito().fontFamily,
         appBarTheme: AppBarTheme(color:MyColors.darkBlue ),
 
       ),

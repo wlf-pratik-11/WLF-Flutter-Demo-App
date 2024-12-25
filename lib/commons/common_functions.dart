@@ -1,11 +1,25 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-TextStyle appbarTextStyle() {
-  return TextStyle(
-    color: Colors.white,
-  );
+import 'my_colors.dart';
+
+AppBar commonAppBar(String title){
+  return AppBar(
+      title: Text(
+        title,
+        style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+        ),
+      ),
+      iconTheme: IconThemeData(color: Colors.white),
+      backgroundColor: MyColors.darkBlue,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        systemStatusBarContrastEnforced: true,
+        // statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+      ));
 }
 
 ListView drawerItem(List lstItem) {

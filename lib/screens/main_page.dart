@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/multi_language_strings.dart';
+import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
 import 'package:main_app_demo/screens/signUpScreen/signup_screen.dart';
 import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen.dart';
 
 import '../commons/my_colors.dart';
 import 'changeScreensDemo/content_holder_screen.dart';
+import 'dateTimeScreen/datetime_screen.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -23,23 +25,21 @@ class MainPage extends StatelessWidget {
     {
       "name":"Sign Up Screen",
       "route": SignupScreen()
+    },
+    {
+      "name":"Date Time Screen",
+      "route": DatetimeScreen()
+    },
+    {
+      "name":"Show Image From Camera And Gallery Screen",
+      "route": ShowImageFromCameraAndGalleryScreen()
     }
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-            MultiLanguageStrings.mainPage,
-            style: appbarTextStyle(),
-          ),
-          iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: MyColors.darkBlue,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            systemStatusBarContrastEnforced: true,
-            // statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-          )),
+      appBar: commonAppBar("Main Page"),
       drawer: Drawer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

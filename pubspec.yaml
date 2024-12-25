@@ -41,6 +41,7 @@ dependencies:
   intl: any
   email_validator: any
   rxdart: any
+  image_picker: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

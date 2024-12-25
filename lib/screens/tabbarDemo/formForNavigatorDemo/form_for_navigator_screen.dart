@@ -25,17 +25,7 @@ class _FormForNavigatorState extends State<FormForNavigator> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-          title: Text(
-            MultiLanguageStrings.fillFormForNavigator,
-            style: appbarTextStyle(),
-          ),
-          iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: MyColors.darkBlue,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            systemStatusBarContrastEnforced: true,
-            // statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-          )),
+      appBar: commonAppBar(MultiLanguageStrings.fillFormForNavigator),
       body: Form(
         key: _block.formKey,
         child: SingleChildScrollView(
@@ -54,14 +44,20 @@ class _FormForNavigatorState extends State<FormForNavigator> {
                         print(_block.formKey.currentState?.validate() ?? false);
                         if (_block.formKey.currentState?.validate() ?? false) {
                           _block.submitForm(context);
+                          _block.dispose();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Data Submitted Succesfully"),
+                            ),
+                          );
                         } else {
-                          print("Not Valivalidate..!!!");
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Please enter valid data..!!"),
+                            ),
+                          );
                         }
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Please Enter All Data"),
-                          ),
-                        );
+
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: MyColors.darkBlue,

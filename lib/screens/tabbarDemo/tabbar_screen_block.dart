@@ -34,5 +34,9 @@ class TabbarScreenBlock{
     }
   }
 
+  void dispose(){
+    _myController.close();
+  }
+
 
 }
