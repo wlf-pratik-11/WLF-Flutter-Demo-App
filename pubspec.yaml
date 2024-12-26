@@ -42,6 +42,10 @@ dependencies:
   email_validator: any
   rxdart: any
   image_picker: any
+  permission_handler: any
+  image_cropper: 7.1.0
+  sqflite: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

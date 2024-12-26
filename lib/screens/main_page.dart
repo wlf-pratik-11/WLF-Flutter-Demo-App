@@ -39,6 +39,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: commonAppBar("Main Page"),
       drawer: Drawer(
         child: Column(
