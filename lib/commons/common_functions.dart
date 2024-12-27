@@ -1,11 +1,13 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rxdart/rxdart.dart';
 
 import 'my_colors.dart';
 
-AppBar commonAppBar(String title){
+AppBar commonAppBar(String title,{List<Widget>? actions}){
   return AppBar(
       title: Text(
         title,
@@ -14,6 +16,7 @@ AppBar commonAppBar(String title){
             fontWeight: FontWeight.bold
         ),
       ),
+      actions: actions ?? []  ,
       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: MyColors.darkBlue,
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -46,12 +49,14 @@ Widget inputField(String fieldName, TextEditingController controller,
     {Function(String value)? validator,
       bool showEyeIcon = false,
       bool? isPassword,
-      Function()? onPressed}) {
+      Function()? onPressed,bool? isNumber}) {
   return Padding(
     padding: const EdgeInsets.only(right: 20, left: 20, top: 15, bottom: 15),
     child: TextFormField(
       obscureText: isPassword ?? false,
       controller: controller,
+      keyboardType:isNumber??false ? TextInputType.number:TextInputType.text,
+      maxLength: isNumber??false ? 10:null,
       decoration: InputDecoration(
         label: Text(
           fieldName,

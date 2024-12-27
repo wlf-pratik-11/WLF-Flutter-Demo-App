@@ -4,6 +4,7 @@ import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/multi_language_strings.dart';
 import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
 import 'package:main_app_demo/screens/signUpScreen/signup_screen.dart';
+import 'package:main_app_demo/screens/sqfLiteDemo/sqflite_demo_screen.dart';
 import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen.dart';
 
 import '../commons/my_colors.dart';
@@ -33,6 +34,10 @@ class MainPage extends StatelessWidget {
     {
       "name":"Show Image From Camera And Gallery Screen",
       "route": ShowImageFromCameraAndGalleryScreen()
+    },
+    {
+      "name":"Sqf Lite Screen",
+      "route": SqfliteDemoScreen()
     }
   ];
 
