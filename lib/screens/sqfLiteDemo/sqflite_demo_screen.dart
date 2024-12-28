@@ -1,9 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/my_colors.dart';
 import 'package:main_app_demo/screens/sqfLiteDemo/sqflite_demo_screen_block.dart';
+
+import 'addContacts/add_contact_screen.dart';
 
 class SqfliteDemoScreen extends StatefulWidget {
   const SqfliteDemoScreen({super.key});
@@ -78,23 +81,43 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
                                   color: Colors.white,
                                 ),
                                 onTap: () {
-                                  print("Edit Button");
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddContactScreen(id:contactList.data?[index]['id'])));
                                 },
                               ),
                             ),
-                            Padding(
-                      padding: const EdgeInsets.only(right: 20),
+                      Padding(
+                              padding: const EdgeInsets.only(right: 20),
                               child: InkWell(
                                 child: Icon(
                                   Icons.delete_outline,
                                   color: Colors.white,
                                 ),
                                 onTap: () {
-                                  _bloc.deleteContact(index);
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => AlertDialog(
+                                      title: Text("Are sure want to delete: ${contactList.data?[index]['name']}"),
+                                      backgroundColor: MyColors.darkBlue,
+                                      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                                          child: Text('Cancel',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,)),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            _bloc.deleteContact(contactList.data?[index]['id']);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('Yes',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),),
+                                        ),
+                                      ],
+                                    ),
+                                  );
                                 },
                               ),
                             ),
-                  ],
+                          ],
                 ),
               );
               },

@@ -15,6 +15,9 @@ class AddContactScreenBloc {
   final addContactController = BehaviorSubject<String>();
   final addContactImageController = BehaviorSubject<String>();
 
+  final singleContact = BehaviorSubject<List<Map<String,dynamic>>>();
+  List<Map<String,dynamic>> singleContactList = [];
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   TextEditingController name = TextEditingController();
@@ -111,6 +114,15 @@ class AddContactScreenBloc {
     if(validateForm()){
       await SqfliteDemoScreenRepo.addNewContact(name.text, contact.text,img);
     }
+  }
+
+  Future<List<Map<String,dynamic>>> getContactById(int id)async{
+    singleContactList = await SqfliteDemoScreenRepo.getContactById(id);
+    img = singleContactList[id]['img'];
+    name = singleContactList[id]['name'];
+    contact = singleContactList[id]['contact'];
+    singleContact.sink.add(singleContactList);
+    return singleContactList;
   }
 
 }

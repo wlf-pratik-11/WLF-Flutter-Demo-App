@@ -8,8 +8,9 @@ import 'package:main_app_demo/screens/sqfLiteDemo/sqflite_demo_screen_block.dart
 import '../../../commons/my_colors.dart';
 
 class AddContactScreen extends StatefulWidget {
+  final int? id;
   final Function()? refreshAllUsers;
-  const AddContactScreen({super.key,this.refreshAllUsers});
+  const AddContactScreen({super.key,this.refreshAllUsers,this.id});
 
   @override
   State<AddContactScreen> createState() => _AddContactScreenState();
@@ -19,6 +20,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
   AddContactScreenBloc _bloc = AddContactScreenBloc();
   @override
   Widget build(BuildContext context) {
+    print(":::::::::::::::::::::::::::Iddddddddddd : ${widget.id}::::::::::::::::::::::::::::");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: commonAppBar("Add Contact"),

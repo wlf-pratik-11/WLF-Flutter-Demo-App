@@ -36,6 +36,11 @@ class SqfliteDemoScreenRepo {
       return db.query("contact",orderBy: "name");
     }
 
+    static Future<List<Map<String, dynamic>>> getContactById(int id) async {
+      final db = await SqfliteDemoScreenRepo.db();
+      return db.query('contact', where: "id = ?", whereArgs: [id], limit: 1);
+    }
+
     static Future<int> updateContact(int id,String name,String mobile,String img)async{
       final db = await SqfliteDemoScreenRepo.db();
       final data = {

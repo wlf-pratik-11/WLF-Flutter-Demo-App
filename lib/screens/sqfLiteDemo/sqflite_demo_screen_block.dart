@@ -21,10 +21,16 @@ class SqfliteDemoScreenBlock{
     return contactList;
   }
 
-  Future<List<Map<String,dynamic>>> deleteContact(int id)async{
-    await SqfliteDemoScreenRepo.deleteContact(id);
-    contactList = await SqfliteDemoScreenRepo.getAllContacts();
-    allContacts.sink.add(contactList);
+  Future<List<Map<String, dynamic>>> deleteContact(int id) async {
+    try {
+      print("::::::::::::::::::::::::Iddd : $id::::::::::::::::::::::::");
+      await SqfliteDemoScreenRepo.deleteContact(id);
+      contactList = await SqfliteDemoScreenRepo.getAllContacts();
+      allContacts.sink.add(contactList);
+      print("::::::::::::::::::::::::Contact Listc : ${contactList.toString()}::::::::::::::::::::::::");
+    } catch (e) {
+      print("Error deleting contact: $e");
+    }
     return contactList;
   }
   
