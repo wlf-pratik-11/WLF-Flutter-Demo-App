@@ -17,17 +17,14 @@ class AddContactScreen extends StatefulWidget {
 }
 
 class _AddContactScreenState extends State<AddContactScreen> {
-  AddContactScreenBloc _bloc = AddContactScreenBloc();
+
   @override
   Widget build(BuildContext context) {
-    print(":::::::::::::::::::::::::::Iddddddddddd : ${widget.id}::::::::::::::::::::::::::::");
+    final AddContactScreenBloc _bloc = AddContactScreenBloc(widget.id);
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: commonAppBar("Add Contact"),
-      body: StreamBuilder<String>(
-        stream: _bloc.addContactController,
-        builder: (context, snapshot) {
-          return SingleChildScrollView(
+      appBar: commonAppBar(widget.id != null ? "Edit Contact" : "Add Contact"),
+      body:SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -123,26 +120,28 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     onPressed: () {
                       if(_bloc.validateForm()){
                         final snakBar = SnackBar(
-                          content:Text("Contact saved successfully..!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                          content:Text(widget.id == null ?"Contact saved successfully..!!" : "Contact updated successfully..!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
                           backgroundColor: Colors.black,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snakBar);
-                        _bloc.addContact();
+                        widget.id == null ?_bloc.saveOrUpdateContact():_bloc.saveOrUpdateContact(id: widget.id);
                         _bloc.name.clear();
                         _bloc.contact.clear();
+                        Navigator.pop(context);
                       }
                       else{
                         final snakBar = SnackBar(
-                          content:Text("Contact Not saved..!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                          content:Text(widget.id == null ?"Contact Not saved..!!" : "Contact not updated.!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
                           backgroundColor: Colors.black,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snakBar);
                       }
+                      print("::::::::::::::::::Refresh all Users : ${widget.refreshAllUsers?.call()}");
                       widget.refreshAllUsers?.call();
-                      Navigator.pop(context);
+
 
                     },
-                    child: Text("Save Contact",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20,),),
+                    child: Text(widget.id == null ? "Save Contact" : "Update Contact",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20,),),
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsetsDirectional.symmetric(horizontal: 0,vertical: 10),
                       minimumSize: Size(double.maxFinite, 20),
@@ -154,9 +153,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                 ),
               ],
             ),
-          );
-        }
-      ),
+          ),
     );
   }
 }

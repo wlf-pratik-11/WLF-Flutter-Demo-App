@@ -1,0 +1,51 @@
+com.example.mainappdemo.main_app_demo.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-0 C:\Users\wlfpr\.gradle\caches\transforms-4\01c190a97275e7e55404689aa977d841\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-fragment-ktx-1.7.1-1 C:\Users\wlfpr\.gradle\caches\transforms-4\046c4c8517aaa450ac2f9afa399411c0\transformed\jetified-fragment-ktx-1.7.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-startup-runtime-1.1.1-2 C:\Users\wlfpr\.gradle\caches\transforms-4\0c51293586d5790f090040e24466a699\transformed\jetified-startup-runtime-1.1.1\res
+com.example.mainappdemo.main_app_demo.app-coordinatorlayout-1.0.0-3 C:\Users\wlfpr\.gradle\caches\transforms-4\16d46ad9dcc192fc3e128c9ff879cfe3\transformed\coordinatorlayout-1.0.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-datastore-1.0.0-4 C:\Users\wlfpr\.gradle\caches\transforms-4\18fa63713c1451041320c97eb9c060f2\transformed\jetified-datastore-1.0.0\res
+com.example.mainappdemo.main_app_demo.app-core-1.13.1-5 C:\Users\wlfpr\.gradle\caches\transforms-4\1bc1656368c8e224ebcefdb3016bb2f4\transformed\core-1.13.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-datastore-preferences-1.0.0-6 C:\Users\wlfpr\.gradle\caches\transforms-4\2414abe7a847713b258e3872b3e1aa52\transformed\jetified-datastore-preferences-1.0.0\res
+com.example.mainappdemo.main_app_demo.app-preference-1.2.1-7 C:\Users\wlfpr\.gradle\caches\transforms-4\2457b701ca6a88531671a260ab2f4159\transformed\preference-1.2.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-profileinstaller-1.3.1-8 C:\Users\wlfpr\.gradle\caches\transforms-4\325dda66fa6baa61b45844c6d00e0f50\transformed\jetified-profileinstaller-1.3.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-window-java-1.2.0-9 C:\Users\wlfpr\.gradle\caches\transforms-4\32a993b2e2a6020a550370c56db57fd1\transformed\jetified-window-java-1.2.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-lifecycle-runtime-ktx-2.7.0-10 C:\Users\wlfpr\.gradle\caches\transforms-4\3363890e505238f4cb66c74f78327a7a\transformed\jetified-lifecycle-runtime-ktx-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-activity-1.9.3-11 C:\Users\wlfpr\.gradle\caches\transforms-4\39983713bd18fc6a27d8f4b64abe4c6a\transformed\jetified-activity-1.9.3\res
+com.example.mainappdemo.main_app_demo.app-jetified-activity-ktx-1.9.3-12 C:\Users\wlfpr\.gradle\caches\transforms-4\40ab534f795eb65e6fd23c71a41ad9ab\transformed\jetified-activity-ktx-1.9.3\res
+com.example.mainappdemo.main_app_demo.app-jetified-ucrop-2.2.9-13 C:\Users\wlfpr\.gradle\caches\transforms-4\4246250b01257215948055bd6e7ef0b0\transformed\jetified-ucrop-2.2.9\res
+com.example.mainappdemo.main_app_demo.app-jetified-tracing-1.2.0-14 C:\Users\wlfpr\.gradle\caches\transforms-4\4344cffd0025a144347317e4fbe79787\transformed\jetified-tracing-1.2.0\res
+com.example.mainappdemo.main_app_demo.app-lifecycle-livedata-core-2.7.0-15 C:\Users\wlfpr\.gradle\caches\transforms-4\4a9012499584e8c45e5fa67a2c7c7359\transformed\lifecycle-livedata-core-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-lifecycle-runtime-2.7.0-16 C:\Users\wlfpr\.gradle\caches\transforms-4\557aeb5f2cdd598291f1de5cf5d1b698\transformed\lifecycle-runtime-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-savedstate-ktx-1.2.1-17 C:\Users\wlfpr\.gradle\caches\transforms-4\6710a9188ab0e4b2444fd29f98cd2466\transformed\jetified-savedstate-ktx-1.2.1\res
+com.example.mainappdemo.main_app_demo.app-slidingpanelayout-1.2.0-18 C:\Users\wlfpr\.gradle\caches\transforms-4\72f821cf3c0a57783f37db67073d71a4\transformed\slidingpanelayout-1.2.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-window-1.2.0-19 C:\Users\wlfpr\.gradle\caches\transforms-4\783a375a336d91e60a1e277554c06bd4\transformed\jetified-window-1.2.0\res
+com.example.mainappdemo.main_app_demo.app-core-runtime-2.2.0-20 C:\Users\wlfpr\.gradle\caches\transforms-4\7b75c52f6288bb69fb76ea7f9e372228\transformed\core-runtime-2.2.0\res
+com.example.mainappdemo.main_app_demo.app-recyclerview-1.0.0-21 C:\Users\wlfpr\.gradle\caches\transforms-4\818ade2212988b61e0f2b56174c50286\transformed\recyclerview-1.0.0\res
+com.example.mainappdemo.main_app_demo.app-lifecycle-viewmodel-2.7.0-22 C:\Users\wlfpr\.gradle\caches\transforms-4\81c7cec753a5ee0575f0b893d8d5c56a\transformed\lifecycle-viewmodel-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-appcompat-1.6.1-23 C:\Users\wlfpr\.gradle\caches\transforms-4\88f500d1f31c00d96f60982af417ad46\transformed\appcompat-1.6.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-lifecycle-viewmodel-ktx-2.7.0-24 C:\Users\wlfpr\.gradle\caches\transforms-4\8a0230b2b8902a8439bb2930015113d1\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-lifecycle-livedata-core-ktx-2.7.0-25 C:\Users\wlfpr\.gradle\caches\transforms-4\9fdfc9386991bcb708fe7a84929d71d3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-fragment-1.7.1-26 C:\Users\wlfpr\.gradle\caches\transforms-4\a15de556139e0c8eaa2bb94bc0b065d7\transformed\fragment-1.7.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-emoji2-1.2.0-27 C:\Users\wlfpr\.gradle\caches\transforms-4\a56654c9eb2c486bfa521685ad17ae61\transformed\jetified-emoji2-1.2.0\res
+com.example.mainappdemo.main_app_demo.app-lifecycle-livedata-2.7.0-28 C:\Users\wlfpr\.gradle\caches\transforms-4\a95d426691c826592624f7823e0b8eb4\transformed\lifecycle-livedata-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-emoji2-views-helper-1.2.0-29 C:\Users\wlfpr\.gradle\caches\transforms-4\b34e86fa28ce2462a2f470b157e92925\transformed\jetified-emoji2-views-helper-1.2.0\res
+com.example.mainappdemo.main_app_demo.app-transition-1.4.1-30 C:\Users\wlfpr\.gradle\caches\transforms-4\b4e8d0f1f576c31d21aa5c30a37edf29\transformed\transition-1.4.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-savedstate-1.2.1-31 C:\Users\wlfpr\.gradle\caches\transforms-4\c3c3b8a343cc546dcf7a44d66971972c\transformed\jetified-savedstate-1.2.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-appcompat-resources-1.6.1-32 C:\Users\wlfpr\.gradle\caches\transforms-4\e6c5b9c33eb526a48c9d4f555ae44b48\transformed\jetified-appcompat-resources-1.6.1\res
+com.example.mainappdemo.main_app_demo.app-jetified-lifecycle-process-2.7.0-33 C:\Users\wlfpr\.gradle\caches\transforms-4\eb53b5baa5510503779d8e695cc76ec0\transformed\jetified-lifecycle-process-2.7.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-core-1.0.0-34 C:\Users\wlfpr\.gradle\caches\transforms-4\f2893fcd112930a1d472972751eecbc8\transformed\jetified-core-1.0.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-annotation-experimental-1.4.0-35 C:\Users\wlfpr\.gradle\caches\transforms-4\f55d4b8643e61456d4cd41751a63b355\transformed\jetified-annotation-experimental-1.4.0\res
+com.example.mainappdemo.main_app_demo.app-jetified-core-ktx-1.13.1-36 C:\Users\wlfpr\.gradle\caches\transforms-4\fa6145c054039cbcf82e02eac5351111\transformed\jetified-core-ktx-1.13.1\res
+com.example.mainappdemo.main_app_demo.app-debug-37 C:\Users\wlfpr\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.24\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.mainappdemo.main_app_demo.app-debug-38 C:\Users\wlfpr\AppData\Local\Pub\Cache\hosted\pub.dev\image_cropper-7.1.0\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.mainappdemo.main_app_demo.app-debug-39 C:\Users\wlfpr\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.12+19\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.mainappdemo.main_app_demo.app-debug-40 C:\Users\wlfpr\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.15\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.mainappdemo.main_app_demo.app-debug-41 C:\Users\wlfpr\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.0.13\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.mainappdemo.main_app_demo.app-debug-42 C:\Users\wlfpr\AppData\Local\Pub\Cache\hosted\pub.dev\shared_preferences_android-2.4.0\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.mainappdemo.main_app_demo.app-debug-43 C:\Users\wlfpr\AppData\Local\Pub\Cache\hosted\pub.dev\sqflite_android-2.4.0\android\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.mainappdemo.main_app_demo.app-pngs-44 D:\WLF Pratik Tank\Flutter Projects\main_app_demo\android\app\build\generated\res\pngs\debug
+com.example.mainappdemo.main_app_demo.app-resValues-45 D:\WLF Pratik Tank\Flutter Projects\main_app_demo\android\app\build\generated\res\resValues\debug
+com.example.mainappdemo.main_app_demo.app-mergeDebugResources-46 D:\WLF Pratik Tank\Flutter Projects\main_app_demo\android\app\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.mainappdemo.main_app_demo.app-mergeDebugResources-47 D:\WLF Pratik Tank\Flutter Projects\main_app_demo\android\app\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.mainappdemo.main_app_demo.app-debug-48 D:\WLF Pratik Tank\Flutter Projects\main_app_demo\android\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.mainappdemo.main_app_demo.app-debug-49 D:\WLF Pratik Tank\Flutter Projects\main_app_demo\android\app\src\debug\res
+com.example.mainappdemo.main_app_demo.app-main-50 D:\WLF Pratik Tank\Flutter Projects\main_app_demo\android\app\src\main\res

@@ -27,7 +27,6 @@ class SqfliteDemoScreenRepo {
         "img" : img,
       };
       final id = await db.insert("contact", data,conflictAlgorithm: sql.ConflictAlgorithm.replace);
-      print(id);
       return id;
     }
 

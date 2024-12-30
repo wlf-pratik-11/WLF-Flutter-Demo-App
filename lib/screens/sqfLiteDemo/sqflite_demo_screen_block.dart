@@ -15,12 +15,6 @@ class SqfliteDemoScreenBlock{
 
   List<Map<String,dynamic>> contactList = [];
 
-  Future<List<Map<String,dynamic>>> getAllUsers()async{
-    contactList = await SqfliteDemoScreenRepo.getAllContacts();
-    allContacts.sink.add(contactList);
-    return contactList;
-  }
-
   Future<List<Map<String, dynamic>>> deleteContact(int id) async {
     try {
       print("::::::::::::::::::::::::Iddd : $id::::::::::::::::::::::::");
@@ -33,12 +27,22 @@ class SqfliteDemoScreenBlock{
     }
     return contactList;
   }
-  
-  void goToAddContactScreen(BuildContext context){
+
+
+  Future<List<Map<String,dynamic>>> getAllUsers()async{
+    contactList = await SqfliteDemoScreenRepo.getAllContacts();
+    allContacts.sink.add(contactList);
+    return contactList;
+  }
+
+
+  void goToAddContactScreen(BuildContext context,{int? id}){
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => AddContactScreen(refreshAllUsers: () {
+      MaterialPageRoute(builder: (context) => id==null ?AddContactScreen(refreshAllUsers: () {
         return getAllUsers();
-      },)),
+      }):AddContactScreen(refreshAllUsers: () {
+        return getAllUsers();
+      },id: id,)),
     );
   }
 }

@@ -44,86 +44,198 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
         builder: (context, contactList) {
           return contactList.data?.length==null ?
           Text("Please Add Contact"):
-          ListView.builder(
-            itemCount: contactList.data?.length,
-            itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: MyColors.darkBlue,),
-                margin: EdgeInsets.all(10),
-                height: 80,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 25),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        clipBehavior: Clip.antiAlias,
-                        child: (contactList.data?[index]['img'].toString().isEmpty??true) ? Image.asset("assets/images/userImg.png",height: 60,width: 60,fit: BoxFit.cover,) : Image.file(File(contactList.data?[index]['img']??" "),height: 60,width: 60,fit: BoxFit.cover,),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(contactList.data?[index]['name'],style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),),
-                        Text("+91 ${contactList.data?[index]['mobile']}",style: TextStyle(fontSize: 17,color: Colors.white,fontWeight: FontWeight.bold),)
-                      ],
-                    ),
-                    Spacer(),
-                    Padding(
-                              padding: const EdgeInsets.only(right: 25),
-                              child: InkWell(
-                                radius: 15,
-                                highlightColor:  Colors.transparent,
-                                child: Icon(
-                                  Icons.edit,
-                                  color: Colors.white,
-                                ),
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddContactScreen(id:contactList.data?[index]['id'])));
-                                },
-                              ),
-                            ),
-                      Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: InkWell(
-                                child: Icon(
-                                  Icons.delete_outline,
-                                  color: Colors.white,
-                                ),
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) => AlertDialog(
-                                      title: Text("Are sure want to delete: ${contactList.data?[index]['name']}"),
-                                      backgroundColor: MyColors.darkBlue,
-                                      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                                          child: Text('Cancel',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,)),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            _bloc.deleteContact(contactList.data?[index]['id']);
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text('Yes',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ],
-                ),
-              );
-              },
-          );
+          listView(contactList.data ?? []);
         }
       ),
+    );
+  }
+  Widget listView( List<Map<String,dynamic>> contactList ){
+    return ListView.builder(
+      itemCount: contactList.length,
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: MyColors.darkBlue,),
+          margin: EdgeInsets.all(10),
+          height: 80,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15,right: 25),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  clipBehavior: Clip.antiAlias,
+                  child: (contactList[index]['img'].toString().isEmpty??true) ? Image.asset("assets/images/userImg.png",height: 60,width: 60,fit: BoxFit.cover,) : Image.file(File(contactList[index]['img']??" "),height: 60,width: 60,fit: BoxFit.cover,),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(contactList[index]['name'],style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),),
+                  Text("+91 ${contactList[index]['mobile']}",style: TextStyle(fontSize: 17,color: Colors.white,fontWeight: FontWeight.bold),)
+                ],
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 25),
+                child: InkWell(
+                  radius: 15,
+                  highlightColor:  Colors.transparent,
+                  child: Icon(
+                    Icons.edit,
+                    color: Colors.white,
+                  ),
+                  onTap: () {
+                    _bloc.goToAddContactScreen(context,id: contactList[index]['id']);
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: InkWell(
+                  child: Icon(
+                    Icons.delete_outline,
+                    color: Colors.white,
+                  ),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text("Are sure want to delete: ${contactList[index]['name']}"),
+                        backgroundColor: MyColors.darkBlue,
+                        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: Text('Cancel',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,)),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              _bloc.deleteContact(contactList[index]['id']);
+                              Navigator.pop(context);
+                            },
+                            child: Text('Yes',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget gridView(List<Map<String,dynamic>> contactList){
+    return GridView.count(
+      crossAxisCount: 2,
+      children: List.generate(contactList.length, (index) {
+        return Container(
+          decoration: BoxDecoration(color: MyColors.darkBlue,borderRadius: BorderRadius.circular(20),border: Border.all(color: Colors.white,width: 5)),
+          height: 200,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15,right: 25,top: 15),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  clipBehavior: Clip.antiAlias,
+                  child: (contactList[index]['img'].toString().isEmpty??true) ? Image.asset("assets/images/userImg.png",height: 60,width: 60,fit: BoxFit.cover,) : Image.file(File(contactList[index]['img']??" "),height: 60,width: 60,fit: BoxFit.cover,),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(contactList[index]['name'],style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),),
+                    Text("+91 ${contactList[index]['mobile']}",style: TextStyle(fontSize: 17,color: Colors.white,fontWeight: FontWeight.bold),)
+                  ],
+                ),
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Spacer(),Spacer(),
+                      InkWell(
+                        radius: 15,
+                        highlightColor: Colors.transparent,
+                        child: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                        onTap: () {
+                          _bloc.goToAddContactScreen(context, id: contactList[index]['id']);
+                        },
+                      ),
+                      Spacer(),
+                      InkWell(
+                        child: Icon(
+                          Icons.delete_outline,
+                          color: Colors.white,
+                        ),
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: Text("Are sure want to delete: ${contactList[index]['name']}"),
+                              backgroundColor: MyColors.darkBlue,
+                              titleTextStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: GoogleFonts.nunito().fontFamily,
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                                  child: Text('Cancel',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: GoogleFonts.nunito().fontFamily,
+                                      )),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    _bloc.deleteContact(contactList[index]['id']);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    'Yes',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: GoogleFonts.nunito().fontFamily,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      Spacer(),Spacer(),
+                    ],
+                  ),
+              ),
+              ],
+            ),
+        );
+      },),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/multi_language_strings.dart';
+import 'package:main_app_demo/screens/sharedPreferencesScreen/shared_preferences_screen.dart';
 import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
 import 'package:main_app_demo/screens/signUpScreen/signup_screen.dart';
 import 'package:main_app_demo/screens/sqfLiteDemo/sqflite_demo_screen.dart';
@@ -38,6 +39,10 @@ class MainPage extends StatelessWidget {
     {
       "name":"Sqf Lite Screen",
       "route": SqfliteDemoScreen()
+    },
+    {
+      "name":"Shared Preferences Screen",
+      "route": SharedPreferencesScreen()
     }
   ];
 
@@ -90,7 +95,11 @@ class MainPage extends StatelessWidget {
         ),
       ),
       body: Column(
-
+            crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Text("Welcome to Our Flutter App",style: TextStyle(color: MyColors.darkBlue,fontWeight: FontWeight.bold,fontSize: 15),))
+        ],
       ),
     );
   }
