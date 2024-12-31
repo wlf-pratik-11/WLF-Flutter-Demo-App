@@ -38,7 +38,7 @@ class _ContentHolderScreenState extends State<ContentHolderScreen> {
                               padding: const EdgeInsets.only(left: 15),
                               child: Text(
                                 "${position.data?.position}/${snapshot.data?.length}",
-                                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 25),
+                                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: tabbarFontsize),
                               ),
                             ),
                             Expanded(
@@ -49,7 +49,7 @@ class _ContentHolderScreenState extends State<ContentHolderScreen> {
                               child: InkWell(
                                 child: Text(
                                   "Skip",
-                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 25),
+                                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: tabbarFontsize),
                                 ),
                                 onTap: () => Navigator.pop(context),
                               ),
@@ -76,7 +76,7 @@ class _ContentHolderScreenState extends State<ContentHolderScreen> {
                                   child: (position.data!.position > 1)
                                       ? Text(
                                           "Prev",
-                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 25),
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: tabbarFontsize),
                                         )
                                       : Spacer(),
                                   splashColor: Colors.transparent,
@@ -101,7 +101,7 @@ class _ContentHolderScreenState extends State<ContentHolderScreen> {
                                             padding: const EdgeInsets.only(left: 5,right: 5),
                                             child: Container(
                                               height: 10,
-                                              width: 25,
+                                              width: 20,
                                               decoration: BoxDecoration(
                                                   color: (position.data?.position) ==index+1 ? Colors.yellow.shade700:Colors.yellow.shade700.withOpacity(0.5),
                                                   borderRadius: BorderRadius.circular(5)
@@ -120,12 +120,12 @@ class _ContentHolderScreenState extends State<ContentHolderScreen> {
                                   child: (position.data!.position < snapshot.data!.length)
                                       ? Text(
                                           "Next",
-                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 25),
+                                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: tabbarFontsize),
                                         )
                                       : Text(
                                           "Get Started",
                                           style:
-                                              TextStyle(fontWeight: FontWeight.bold, color: Colors.blue.shade900, fontSize: 25),
+                                              TextStyle(fontWeight: FontWeight.bold, color: Colors.blue.shade900, fontSize: tabbarFontsize),
                                         ),
                                   splashColor: Colors.transparent,
                                   onTap: () {

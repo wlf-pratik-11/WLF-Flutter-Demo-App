@@ -31,6 +31,7 @@ class _SignupScreenState extends State<SignupScreen> {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
+              fontSize: tabbarFontsize
             ),
           ),
         ),
@@ -104,14 +105,14 @@ class _SignupScreenState extends State<SignupScreen> {
                             text: 'By signing up, you agree to the',
                             style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16,
+                                fontSize: descriptionFontsize,
                                 fontWeight: FontWeight.bold),
                             children: <InlineSpan>[
                               TextSpan(
                                 text: ' Terms of  Service and Privacy Policy',
                                 style: TextStyle(
                                     color: Colors.deepPurpleAccent,
-                                    fontSize: 16,
+                                    fontSize: descriptionFontsize,
                                     fontWeight: FontWeight.bold),
                               )
                             ]),
@@ -156,14 +157,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     text: 'Already have an account ?',
                     style: TextStyle(
                         color: Colors.black38,
-                        fontSize: 16,
+                        fontSize: descriptionFontsize,
                         fontWeight: FontWeight.bold),
                     children: [
                       TextSpan(
                           text: ' Login',
                           style: TextStyle(
                               color: Colors.deepPurpleAccent,
-                              fontSize: 16,
+                              fontSize: descriptionFontsize,
                               fontWeight: FontWeight.bold),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {

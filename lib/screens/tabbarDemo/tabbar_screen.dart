@@ -31,6 +31,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
             iconTheme: IconThemeData(color: Colors.white),
             backgroundColor: MyColors.darkBlue,
             systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
               systemStatusBarContrastEnforced: true,
               // statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
             ),
@@ -39,19 +40,19 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                 Tab(
                   child: Text(
                     "Dialog Box",
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: tabbarTitleTextFontsize),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    "Bottom Sheet",
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    "BottomSheet",
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: tabbarTitleTextFontsize),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    "Dialog Box",
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    "Navigation",
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: tabbarTitleTextFontsize),
                   ),
                 ),
               ],
@@ -75,7 +76,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                                 padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                                 child: Text(
                                   "This Is Home Page..!!",
-                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                  style: TextStyle(color: Colors.white, fontSize: alertDilogeTextFontsize),
                                 ),
                               ),
                               TextButton(
@@ -86,6 +87,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                                   "Close",
                                   style: TextStyle(
                                     color: Colors.white,
+                                      fontSize: alertDilogeTextFontsize
                                   ),
                                 ),
                               ),
@@ -99,7 +101,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                     ),
                     child: Text(
                       "Home Page",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(color: Colors.white, fontSize: buttonFontsize),
                     )),
               ),
               Center(
@@ -122,7 +124,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                                 children: [
                                   Text(
                                     "Your Balance is : 54600",
-                                    style: TextStyle(fontSize: 25, color: Colors.white),
+                                    style: TextStyle(fontSize: alertDilogeTextFontsize, color: Colors.white),
                                   ),
                                   TextButton(
                                     onPressed: () {
@@ -130,7 +132,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                                     },
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-                                      child: Text("Close", style: TextStyle(color: Colors.white, fontSize: 18)),
+                                      child: Text("Close", style: TextStyle(color: Colors.white, fontSize: alertDilogeTextFontsize)),
                                     ),
                                   )
                                 ],
@@ -145,7 +147,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                     ),
                     child: Text(
                       "Cheak Account Balance",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      style: TextStyle(color: Colors.white, fontSize: buttonFontsize),
                     )),
               ),
               Column(
@@ -162,7 +164,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
                         child: Text(
                           "Fill Form",
-                          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: buttonFontsize, color: Colors.white, fontWeight: FontWeight.bold),
                         )),
                   ),
                   Divider(
@@ -173,7 +175,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Text(
                       "Form Data",
-                      style: TextStyle(color: MyColors.darkBlue, fontWeight: FontWeight.bold, fontSize: 30),
+                      style: TextStyle(color: MyColors.darkBlue, fontWeight: FontWeight.bold, fontSize: buttonFontsize),
                     ),
                   ),
                   Padding(
@@ -188,28 +190,28 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 "Name :",
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: descriptionFontsize),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 "Mobile No :" + _bloc.mobile,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: descriptionFontsize),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 "Birth Date :" + _bloc.birthDate,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: descriptionFontsize),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 "Email :" + _bloc.email,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: descriptionFontsize),
                               ),
                             ),
                           ],
@@ -228,7 +230,7 @@ class _TabbarDemoPageState extends State<TabbarDemoPage> {
                           SizedBox(width: 8),
                           Text(
                             "Edit Data",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontSize: buttonFontsize),
                           ),
                         ],
                       ),

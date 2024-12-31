@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/my_colors.dart';
 import 'package:main_app_demo/screens/main_page.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    commonFontSizes(context);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

@@ -12,16 +12,13 @@ class AddItemBloc{
   final myController = BehaviorSubject<String>();
 
   TextEditingController item = TextEditingController();
-  
-  List<String> itemList = [];
 
-  Future<void> saveItemList(List<String> itemList) async{
+  Future<void> saveItemList() async{
     SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setStringList('itemList',itemList);
-  }
-
-  void addItem(){
+    List<String> itemList =pref.getStringList('itemList') ?? [];
     itemList.add(item.text);
+    print("Data Saved: ${itemList.toString()}");
+    await pref.setStringList('itemList',itemList);
   }
 
 }

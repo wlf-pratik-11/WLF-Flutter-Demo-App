@@ -101,7 +101,7 @@ Widget _buildBody(BuildContext context,ShowImageFromCameraAndGalleryScreenBloc _
                   },
                 );
               },
-              child: Text("Pick Image",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20,),),
+              child: Text("Pick Image",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: buttonFontsize,),),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsetsDirectional.symmetric(horizontal: 0,vertical: 10),
                 minimumSize: Size(double.maxFinite, 20),

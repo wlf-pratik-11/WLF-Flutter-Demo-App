@@ -29,6 +29,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
+              fontSize: tabbarFontsize
             ),
           ),
         ),

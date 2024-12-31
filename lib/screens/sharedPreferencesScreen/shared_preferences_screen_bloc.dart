@@ -2,18 +2,24 @@ import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesScreenBloc {
-  SharedPreferencesScreenBloc();
+  SharedPreferencesScreenBloc(){
+   getItemList();
+  }
 
-  final myController = BehaviorSubject<String>();
+  final myController = BehaviorSubject<List<String>>();
 
-  Future<List<String>> getItemList() async {
+  Future<void> getItemList() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     List<String>? itemList = pref.getStringList('itemList');
 
     if (itemList != null) {
-      return itemList;
+      print("Item List: $itemList");
+      myController.sink.add(itemList);
     } else {
-      return [];
+      myController.sink.add([]); // Emit an empty list if no data exists
     }
+  }
+  void dispose() {
+    myController.close();
   }
 }

@@ -27,7 +27,7 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
           highlightColor:  Colors.transparent,
           child: Row(
             children: [
-              Text("Add Contact",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+              Text("Add Contact",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: alertDilogeTextFontsize),),
               Padding(
                 padding: const EdgeInsets.only(right: 15),
                 child: Icon(Icons.add,color: Colors.white,size: 30),
@@ -43,7 +43,7 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
         stream: _bloc.allContacts,
         builder: (context, contactList) {
           return contactList.data?.length==null ?
-          Text("Please Add Contact"):
+          Text("Please Add Contact",style: TextStyle(fontSize: descriptionFontsize),):
           listView(contactList.data ?? []);
         }
       ),
@@ -56,7 +56,7 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
         return Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: MyColors.darkBlue,),
           margin: EdgeInsets.all(10),
-          height: 80,
+          height: cardHeight,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -72,8 +72,8 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(contactList[index]['name'],style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold),),
-                  Text("+91 ${contactList[index]['mobile']}",style: TextStyle(fontSize: 17,color: Colors.white,fontWeight: FontWeight.bold),)
+                  Text(contactList[index]['name'],style: TextStyle(fontSize: cardTitleTextFontsize,color: Colors.white,fontWeight: FontWeight.bold),),
+                  Text("+91 ${contactList[index]['mobile']}",style: TextStyle(fontSize: cardSubTextFontsize,color: Colors.white,fontWeight: FontWeight.bold),)
                 ],
               ),
               Spacer(),
@@ -85,6 +85,7 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
                   child: Icon(
                     Icons.edit,
                     color: Colors.white,
+                    size: iconSize,
                   ),
                   onTap: () {
                     _bloc.goToAddContactScreen(context,id: contactList[index]['id']);
@@ -97,6 +98,7 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
                   child: Icon(
                     Icons.delete_outline,
                     color: Colors.white,
+                    size: iconSize,
                   ),
                   onTap: () {
                     showDialog(
@@ -104,18 +106,18 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
                       builder: (BuildContext context) => AlertDialog(
                         title: Text("Are sure want to delete: ${contactList[index]['name']}"),
                         backgroundColor: MyColors.darkBlue,
-                        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),
+                        titleTextStyle: TextStyle(color: Colors.white, fontSize: alertDilogeTextFontsize,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context, 'Cancel'),
-                            child: Text('Cancel',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,)),
+                            child: Text('Cancel',style: TextStyle(color: Colors.white, fontSize: alertDilogeTextFontsize,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,)),
                           ),
                           TextButton(
                             onPressed: () {
                               _bloc.deleteContact(contactList[index]['id']);
                               Navigator.pop(context);
                             },
-                            child: Text('Yes',style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),),
+                            child: Text('Yes',style: TextStyle(color: Colors.white, fontSize: alertDilogeTextFontsize,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.nunito().fontFamily,),),
                           ),
                         ],
                       ),
@@ -136,7 +138,7 @@ class _SqfliteDemoScreenState extends State<SqfliteDemoScreen> {
       children: List.generate(contactList.length, (index) {
         return Container(
           decoration: BoxDecoration(color: MyColors.darkBlue,borderRadius: BorderRadius.circular(20),border: Border.all(color: Colors.white,width: 5)),
-          height: 200,
+          height: cardHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

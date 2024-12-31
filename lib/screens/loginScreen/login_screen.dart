@@ -33,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
+              fontSize: tabbarFontsize
             ),
           ),
         ),
@@ -87,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                           color: Colors.deepPurpleAccent,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                          fontSize: descriptionFontsize),
                     ),
                     onTap: () {
                       Navigator.push(context,MaterialPageRoute(builder: (context) => const ResetPasswordScreen(),) );
@@ -102,14 +103,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                           fontFamily: GoogleFonts.nunito().fontFamily,
                             color: Colors.black38,
-                            fontSize: 16,
+                            fontSize: descriptionFontsize,
                             fontWeight: FontWeight.bold),
                         children: [
                           TextSpan(
                               text: " Sign Up",
                               style: TextStyle(
                                   color: Colors.deepPurpleAccent,
-                                  fontSize: 16,
+                                  fontSize: descriptionFontsize,
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline),
                               recognizer: TapGestureRecognizer()

@@ -25,9 +25,9 @@ class _SharedPreferencesScreenState extends State<SharedPreferencesScreen> {
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(height: 25,),
-          Center(child: Text("Item List",style: TextStyle(fontSize: 25,color: MyColors.darkBlue,fontWeight: FontWeight.bold,),)),
+          Center(child: Text("Item List",style: TextStyle(fontSize: tabbarFontsize,color: MyColors.darkBlue,fontWeight: FontWeight.bold,),)),
           Expanded(
-            child: StreamBuilder<String>(
+            child: StreamBuilder<List<String>>(
               stream: _bloc.myController,
               builder: (context, itemList) {
                 return ListView.builder(
@@ -45,7 +45,7 @@ class _SharedPreferencesScreenState extends State<SharedPreferencesScreen> {
                             color: MyColors.darkBlue,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Center(child: Text("Item : ${itemList.data?[index]}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),textAlign: TextAlign.center,)),
+                          child: Center(child: Text("${itemList.data?[index]}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: cardTitleTextFontsize),textAlign: TextAlign.center,)),
                         ),
                       );
                     },
@@ -56,10 +56,11 @@ class _SharedPreferencesScreenState extends State<SharedPreferencesScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
+        onPressed: () async{
+            await Navigator.push(context, MaterialPageRoute(builder: (context) {
               return AddItem();
             },));
+            _bloc.getItemList();
         },
         child: Icon(Icons.add),
         foregroundColor: Colors.white,

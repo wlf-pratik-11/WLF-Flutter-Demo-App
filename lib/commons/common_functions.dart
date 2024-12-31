@@ -7,11 +7,41 @@ import 'package:rxdart/rxdart.dart';
 
 import 'my_colors.dart';
 
+Size? screenSize;
+commonFontSizes(BuildContext context){
+  screenSize = MediaQuery.sizeOf(context);
+}
+
+var drawerWidth = ((screenSize!.height+screenSize!.width)/2)*0.4;
+
+//Text Sizes
+var buttonFontsize = ((screenSize!.height+screenSize!.width)/2)*0.035;
+var descriptionFontsize = ((screenSize!.height+screenSize!.width)/2)*0.027;
+var tabbarFontsize = ((screenSize!.height+screenSize!.width)/2)*0.035;
+var textfieldTitleFontsize = ((screenSize!.height+screenSize!.width)/2)*0.028;
+var drawerTextFontsize = ((screenSize!.height+screenSize!.width)/2)*0.025 ;
+var tabbarTitleTextFontsize = ((screenSize!.height+screenSize!.width)/2)*0.025;
+var alertDilogeTextFontsize = ((screenSize!.height+screenSize!.width)/2)*0.03;
+var cardTitleTextFontsize = ((screenSize!.height+screenSize!.width)/2)*0.033;
+var cardSubTextFontsize = ((screenSize!.height+screenSize!.width)/2)*0.026;
+var snakbarFontsize = ((screenSize!.height+screenSize!.width)/2)*0.027;
+
+//Card Sizes
+
+var cardHeight = ((screenSize!.height+screenSize!.width)/2)*0.1;
+
+
+//Icon Sizes
+
+var iconSize = ((screenSize!.height+screenSize!.width)/2)*0.04;
+
+
 AppBar commonAppBar(String title,{List<Widget>? actions}){
   return AppBar(
       title: Text(
         title,
         style: TextStyle(
+          fontSize: tabbarFontsize,
             color: Colors.white,
             fontWeight: FontWeight.bold
         ),
@@ -20,8 +50,8 @@ AppBar commonAppBar(String title,{List<Widget>? actions}){
       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: MyColors.darkBlue,
       systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
         systemStatusBarContrastEnforced: true,
-        // statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
       ));
 }
 
@@ -33,7 +63,7 @@ ListView drawerItem(List lstItem) {
       return ListTile(
         title: Text(
           lstItem[index]["name"],
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+          style: TextStyle(fontSize: drawerTextFontsize, fontWeight: FontWeight.w800),
         ),
         onTap: () {
           Navigator.pop(context);
@@ -60,7 +90,7 @@ Widget inputField(String fieldName, TextEditingController controller,
       decoration: InputDecoration(
         label: Text(
           fieldName,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black,fontSize: textfieldTitleFontsize),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
@@ -110,7 +140,7 @@ Widget commonButton(String text, {Function()? buttonStatusFun}) {
         child: Text(
           text,
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: buttonFontsize),
         ),
       ),
       style: ElevatedButton.styleFrom(
@@ -136,7 +166,7 @@ Widget sliderView(String mainTxt,String? subTxt,String? img){
             mainTxt,
             style: TextStyle(
                 color: Color.fromRGBO(36, 74, 78, 1.0),
-                fontSize: 25,
+                fontSize: tabbarFontsize,
                 fontWeight: FontWeight.bold
             ),
           ),
@@ -146,7 +176,7 @@ Widget sliderView(String mainTxt,String? subTxt,String? img){
           child: Text(
             subTxt??"",
             style:
-            TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
+            TextStyle(fontSize: descriptionFontsize, color: Colors.black, fontWeight: FontWeight.bold),
             textAlign: TextAlign.justify,
           ),
         ),

@@ -11,6 +11,7 @@ import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen.dart';
 import '../commons/my_colors.dart';
 import 'changeScreensDemo/content_holder_screen.dart';
 import 'dateTimeScreen/datetime_screen.dart';
+import 'responsiveScreen/responsive_screen.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -43,6 +44,10 @@ class MainPage extends StatelessWidget {
     {
       "name":"Shared Preferences Screen",
       "route": SharedPreferencesScreen()
+    },
+    {
+      "name":"Responsive Screen",
+      "route": ResponsiveScreen()
     }
   ];
 
@@ -52,6 +57,7 @@ class MainPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: commonAppBar("Main Page"),
       drawer: Drawer(
+        width: drawerWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -98,7 +104,41 @@ class MainPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text("Welcome to Our Flutter App",style: TextStyle(color: MyColors.darkBlue,fontWeight: FontWeight.bold,fontSize: 15),))
+          Center(child: Text("Welcome to Our Flutter App",style: TextStyle(color: MyColors.darkBlue,fontWeight: FontWeight.bold,fontSize: 15),)),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(":::: Font Sizes ::::"),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("buttonFontsize",style: TextStyle(fontSize: buttonFontsize),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("descriptionFontsize",style: TextStyle(fontSize: descriptionFontsize),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("tabbarFontsize",style: TextStyle(fontSize: tabbarFontsize),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("textfieldTitleFontsize",style: TextStyle(fontSize: textfieldTitleFontsize),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("drawerTextFontsize",style: TextStyle(fontSize: drawerTextFontsize),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("fontSize: tabbarTitleTextFontsize",style: TextStyle(fontSize: tabbarTitleTextFontsize),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(" fontSize: alertDilogeTextFontsize",style: TextStyle( fontSize: alertDilogeTextFontsize),),
+          ),
+
+
         ],
       ),
     );

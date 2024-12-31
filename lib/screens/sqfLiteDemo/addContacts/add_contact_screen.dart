@@ -65,7 +65,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Icon(Icons.camera_alt_outlined,size: 45,color: Colors.white,),
-                                            Text("Camera",style: TextStyle(fontSize: 20,color: Colors.white),)
+                                            Text("Camera",style: TextStyle(fontSize: alertDilogeTextFontsize,color: Colors.white),)
                                           ],
                                         ),
                                         onTap: () {
@@ -80,7 +80,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Icon(Icons.photo_album_outlined,size: 45,color: Colors.white,),
-                                            Text("Gallery",style: TextStyle(fontSize: 20,color: Colors.white),)
+                                            Text("Gallery",style: TextStyle(fontSize: alertDilogeTextFontsize,color: Colors.white),)
                                           ],
                                         ),
                                         onTap: () {
@@ -120,7 +120,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     onPressed: () {
                       if(_bloc.validateForm()){
                         final snakBar = SnackBar(
-                          content:Text(widget.id == null ?"Contact saved successfully..!!" : "Contact updated successfully..!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                          content:Text(widget.id == null ?"Contact saved successfully..!!" : "Contact updated successfully..!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: snakbarFontsize),),
                           backgroundColor: Colors.black,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snakBar);
@@ -131,7 +131,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                       }
                       else{
                         final snakBar = SnackBar(
-                          content:Text(widget.id == null ?"Contact Not saved..!!" : "Contact not updated.!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                          content:Text(widget.id == null ?"Contact Not saved..!!" : "Contact not updated.!!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: snakbarFontsize),),
                           backgroundColor: Colors.black,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snakBar);
@@ -141,7 +141,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
 
 
                     },
-                    child: Text(widget.id == null ? "Save Contact" : "Update Contact",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20,),),
+                    child: Text(widget.id == null ? "Save Contact" : "Update Contact",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: buttonFontsize,),),
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsetsDirectional.symmetric(horizontal: 0,vertical: 10),
                       minimumSize: Size(double.maxFinite, 20),
