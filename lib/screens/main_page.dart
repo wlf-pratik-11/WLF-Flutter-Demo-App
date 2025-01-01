@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/multi_language_strings.dart';
+import 'package:main_app_demo/screens/apiCallScreen/api_call_screen.dart';
 import 'package:main_app_demo/screens/sharedPreferencesScreen/shared_preferences_screen.dart';
 import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
 import 'package:main_app_demo/screens/signUpScreen/signup_screen.dart';
 import 'package:main_app_demo/screens/sqfLiteDemo/sqflite_demo_screen.dart';
 import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen.dart';
+import 'package:main_app_demo/utils/custom_icons.dart';
 
 import '../commons/my_colors.dart';
 import 'changeScreensDemo/content_holder_screen.dart';
@@ -48,6 +50,10 @@ class MainPage extends StatelessWidget {
     {
       "name":"Responsive Screen",
       "route": ResponsiveScreen()
+    },
+    {
+      "name":"API Call Screen",
+      "route": ApiCallScreen()
     }
   ];
 
@@ -104,40 +110,65 @@ class MainPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text("Welcome to Our Flutter App",style: TextStyle(color: MyColors.darkBlue,fontWeight: FontWeight.bold,fontSize: 15),)),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(":::: Font Sizes ::::"),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text("buttonFontsize",style: TextStyle(fontSize: buttonFontsize),),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text("descriptionFontsize",style: TextStyle(fontSize: descriptionFontsize),),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text("tabbarFontsize",style: TextStyle(fontSize: tabbarFontsize),),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text("textfieldTitleFontsize",style: TextStyle(fontSize: textfieldTitleFontsize),),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text("drawerTextFontsize",style: TextStyle(fontSize: drawerTextFontsize),),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text("fontSize: tabbarTitleTextFontsize",style: TextStyle(fontSize: tabbarTitleTextFontsize),),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(" fontSize: alertDilogeTextFontsize",style: TextStyle( fontSize: alertDilogeTextFontsize),),
-          ),
-
+          Center(child: Text("Welcome to Our Flutter App",style: TextStyle(color: MyColors.darkBlue,fontWeight: FontWeight.bold,fontSize: tabbarFontsize),)),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text(":::: Font Sizes ::::"),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text("buttonFontsize",style: TextStyle(fontSize: buttonFontsize),),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text("descriptionFontsize",style: TextStyle(fontSize: descriptionFontsize),),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text("tabbarFontsize",style: TextStyle(fontSize: tabbarFontsize),),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text("textfieldTitleFontsize",style: TextStyle(fontSize: textfieldTitleFontsize),),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text("drawerTextFontsize",style: TextStyle(fontSize: drawerTextFontsize),),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text("fontSize: tabbarTitleTextFontsize",style: TextStyle(fontSize: tabbarTitleTextFontsize),),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Text(" fontSize: alertDilogeTextFontsize",style: TextStyle( fontSize: alertDilogeTextFontsize),),
+          // ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment:MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(CustomIcons.briefcase_svgrepo_com,size: 50,),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(CustomIcons.brightness_6,size: 50,),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(CustomIcons.brightness_auto,size: 50,),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(CustomIcons.telephone_svgrepo_com,size: 50,),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(CustomIcons.pen_svgrepo_com,size: 50,),
+              ),
+            ],
+          )
 
         ],
       ),

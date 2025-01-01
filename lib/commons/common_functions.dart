@@ -12,6 +12,8 @@ commonFontSizes(BuildContext context){
   screenSize = MediaQuery.sizeOf(context);
 }
 
+var screenSizeRatio = ((screenSize!.height+screenSize!.width)/2);
+
 var drawerWidth = ((screenSize!.height+screenSize!.width)/2)*0.4;
 
 //Text Sizes
@@ -34,6 +36,11 @@ var cardHeight = ((screenSize!.height+screenSize!.width)/2)*0.1;
 //Icon Sizes
 
 var iconSize = ((screenSize!.height+screenSize!.width)/2)*0.04;
+
+
+//Container Sizes
+
+var apiCallScreenListItemHeight = ((screenSize!.height+screenSize!.width)/2)*0.45;
 
 
 AppBar commonAppBar(String title,{List<Widget>? actions}){
