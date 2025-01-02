@@ -47,6 +47,7 @@ dependencies:
   sqflite: any
   shared_preferences: any
   dio: any
+  shimmer: any
 
 
 dev_dependencies:

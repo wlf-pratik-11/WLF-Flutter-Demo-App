@@ -14,9 +14,9 @@ class ApiCallScreenBloc {
   final getDataByIdController = BehaviorSubject<Map<String, dynamic>>();
 
   void fetchData() async {
-    List<Map<String, dynamic>> dataList = [];
-    dataList = await repo.getData();
-    myController.sink.add(await dataList);
+    myController.sink.add([]);
+    List<Map<String, dynamic>> dataList = await repo.getData();
+    myController.sink.add(dataList);
   }
 
   void goToEditDataScreen(

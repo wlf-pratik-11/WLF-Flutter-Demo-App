@@ -24,13 +24,12 @@ class ApiCallScreenRepo {
     return singleData;
   }
 
-  Future<void> putData(int id, var data) async {
+  Future<bool> putData(int id, var data) async {
     await Dio().patch("$url/$id", data: jsonEncode(data));
     var responce = await Dio().get("$url/$id");
     print("Data :::::: " + responce.data.toString());
-    (responce.statusCode == 200)
-        ? print("::::::::::::::::::::::::::::::Data Updeted..!!!:::::::::::::::::::::::::")
-        : print("::::::::::::::::::::::::There is an Error in Update:::::::::::::::::::::::::::::::");
+    return (responce.statusCode == 200);
+
   }
 
   Future<bool> deleteData(int id) async {

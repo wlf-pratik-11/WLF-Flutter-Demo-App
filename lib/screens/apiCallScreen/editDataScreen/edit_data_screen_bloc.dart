@@ -42,7 +42,7 @@ class EditDataScreenBloc {
     readOnlyTextFieldController.sink.add(readOnly);
   }
 
-  void updateData(int id) async {
+  Future<void> updateData(int id,BuildContext context, dynamic widget) async {
     Map<String, dynamic> mapData = {
       "name": name.text,
       "bDate": bDate.text,
@@ -55,13 +55,18 @@ class EditDataScreenBloc {
     };
 
     var data = ApiCallScreenDl.fromJson(mapData);
-
-    repo.putData(id, data);
+    bool isUpadeted = await repo.putData(id, data);
+    if (isUpadeted) {
+      await widget.refreshAllData?.call();
+      if (context.mounted) Navigator.pop(context); // Close dialog after refresh.
+    }
   }
 
-  Future<void> deleteDataFromApi(int id, BuildContext context) async {
-    if (await repo.deleteData(id) && context.mounted) {
-      Navigator.pop(context);
+  Future<void> deleteDataFromApi(int id, BuildContext context, dynamic widget) async {
+    bool isDeleted = await repo.deleteData(id);
+    if (isDeleted) {
+      await widget.refreshAllData?.call();
+      if (context.mounted) Navigator.pop(context); // Close dialog after refresh.
     }
   }
 }
