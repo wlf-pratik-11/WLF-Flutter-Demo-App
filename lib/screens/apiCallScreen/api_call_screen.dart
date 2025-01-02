@@ -3,7 +3,6 @@ import 'package:main_app_demo/commons/common_functions.dart';
 
 import '../../commons/my_colors.dart';
 import 'api_call_screen_bloc.dart';
-import 'editDataScreen/edit_data_screen.dart';
 
 class ApiCallScreen extends StatefulWidget {
   const ApiCallScreen({super.key});
@@ -40,13 +39,10 @@ class _ApiCallScreenState extends State<ApiCallScreen> {
                       child: InkWell(
                         onTap: () {
                           int id = int.parse(snapshot.data?[index]['id']);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EditDataScreen(
-                                  id: id,
-                                ),
-                              ));
+                          _bloc.goToEditDataScreen(
+                            context,
+                            id,
+                          );
                         },
                         child: Container(
                           height: apiCallScreenListItemHeight,
