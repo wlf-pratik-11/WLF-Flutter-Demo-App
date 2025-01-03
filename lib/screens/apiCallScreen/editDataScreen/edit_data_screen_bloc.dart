@@ -42,7 +42,7 @@ class EditDataScreenBloc {
     readOnlyTextFieldController.sink.add(readOnly);
   }
 
-  Future<void> updateData(int id,BuildContext context, dynamic widget) async {
+  Future<void> updateData(int id, BuildContext context, dynamic widget) async {
     Map<String, dynamic> mapData = {
       "name": name.text,
       "bDate": bDate.text,
@@ -58,7 +58,7 @@ class EditDataScreenBloc {
     bool isUpadeted = await repo.putData(id, data);
     if (isUpadeted) {
       await widget.refreshAllData?.call();
-      if (context.mounted) Navigator.pop(context); // Close dialog after refresh.
+      if (context.mounted) Navigator.pop(context);
     }
   }
 
@@ -66,7 +66,7 @@ class EditDataScreenBloc {
     bool isDeleted = await repo.deleteData(id);
     if (isDeleted) {
       await widget.refreshAllData?.call();
-      if (context.mounted) Navigator.pop(context); // Close dialog after refresh.
+      if (context.mounted) Navigator.pop(context);
     }
   }
 }

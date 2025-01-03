@@ -52,19 +52,19 @@ class _EditDataScreenState extends State<EditDataScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             ElevatedButton(
-                              onPressed: (){
+                              onPressed: () {
                                 _bloc.textFieldVisibility();
                                 if (readOnly.data == false) {
-                                   _bloc.updateData(id,context,widget);
-                                   final snakBar = SnackBar(
-                                     content: Text(
-                                       "Data updated successfully..!!",
-                                       style: TextStyle(
-                                           color: Colors.white, fontWeight: FontWeight.bold, fontSize: snakbarFontsize),
-                                     ),
-                                     backgroundColor: Colors.black,
-                                   );
-                                   ScaffoldMessenger.of(context).showSnackBar(snakBar);
+                                  _bloc.updateData(id, context, widget);
+                                  final snakBar = SnackBar(
+                                    content: Text(
+                                      "Data updated successfully..!!",
+                                      style:
+                                          TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: snakbarFontsize),
+                                    ),
+                                    backgroundColor: Colors.black,
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(snakBar);
                                 }
                               },
                               child: Text(
@@ -112,7 +112,7 @@ class _EditDataScreenState extends State<EditDataScreen> {
                                       ),
                                       TextButton(
                                         onPressed: () {
-                                          _bloc.deleteDataFromApi(id, context,widget);
+                                          _bloc.deleteDataFromApi(id, context, widget);
                                           Navigator.pop(context);
                                           final snakBar = SnackBar(
                                             content: Text(

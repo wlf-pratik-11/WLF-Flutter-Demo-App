@@ -10,7 +10,7 @@ commonFontSizes(BuildContext context) {
 
 var screenSizeRatio = ((screenSize!.height + screenSize!.width) / 2);
 
-var drawerWidth = ((screenSize!.height + screenSize!.width) / 2) * 0.4;
+var drawerWidth = ((screenSize!.height + screenSize!.width) / 2) * 0.48;
 
 //Text Sizes
 var buttonFontsize = ((screenSize!.height + screenSize!.width) / 2) * 0.035;
@@ -76,10 +76,14 @@ Widget inputField(String fieldName, TextEditingController controller,
     bool? isPassword,
     Function()? onPressed,
     bool? isNumber,
-    bool? readOnly}) {
+    bool? readOnly,
+    Function()? onTap}) {
   return Padding(
     padding: const EdgeInsets.only(right: 20, left: 20, top: 15, bottom: 15),
     child: TextFormField(
+      onTap: () {
+        return onTap?.call();
+      },
       readOnly: readOnly ?? false,
       obscureText: isPassword ?? false,
       controller: controller,

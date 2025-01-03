@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/screens/apiCallScreen/api_call_screen.dart';
+import 'package:main_app_demo/screens/paginationScreen/pagination_screen.dart';
 import 'package:main_app_demo/screens/sharedPreferencesScreen/shared_preferences_screen.dart';
 import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
 import 'package:main_app_demo/screens/signUpScreen/signup_screen.dart';
@@ -24,7 +25,8 @@ class MainPage extends StatelessWidget {
     {"name": "Sqf Lite Screen", "route": SqfliteDemoScreen()},
     {"name": "Shared Preferences Screen", "route": SharedPreferencesScreen()},
     {"name": "Responsive Screen", "route": ResponsiveScreen()},
-    {"name": "API Call Screen", "route": ApiCallScreen()}
+    {"name": "API Call Screen", "route": ApiCallScreen()},
+    {"name": "Pagination Screen", "route": PaginationScreen()},
   ];
 
   @override

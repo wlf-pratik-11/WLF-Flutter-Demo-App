@@ -29,11 +29,15 @@ class ApiCallScreenRepo {
     var responce = await Dio().get("$url/$id");
     print("Data :::::: " + responce.data.toString());
     return (responce.statusCode == 200);
-
   }
 
   Future<bool> deleteData(int id) async {
     var response = await Dio().delete("$url/$id");
     return true;
+  }
+
+  Future<bool> postData(Map<String, dynamic> data) async {
+    var responce = await Dio().post("$url", data: jsonEncode(data));
+    return (responce.statusCode == 201);
   }
 }

@@ -48,6 +48,7 @@ dependencies:
   shared_preferences: any
   dio: any
   shimmer: any
+  flutter_content_placeholder: any
 
 
 dev_dependencies:

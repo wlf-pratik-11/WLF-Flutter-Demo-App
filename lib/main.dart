@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/my_colors.dart';
@@ -37,13 +36,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         fontFamily: GoogleFonts.nunito().fontFamily,
-        appBarTheme: AppBarTheme(color:MyColors.darkBlue ),
-
+        appBarTheme: AppBarTheme(color: MyColors.darkBlue),
       ),
       home: const MainPage(),
       debugShowCheckedModeBanner: false,
     );
   }
-
 }
-
