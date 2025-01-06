@@ -1,44 +1,35 @@
 class PaginationScreenDl {
   PaginationScreenDl({
-    int? id,
-    String? email,
-    String? firstName,
-    String? lastName,
-    String? avatar,
-  }) {
-    _id = id;
-    _email = email;
-    _firstName = firstName;
-    _lastName = lastName;
-    _avatar = avatar;
-  }
+    this.id,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.avatar,
+  });
 
-  PaginationScreenDl.fromJson(dynamic json) {
-    _id = json['id'];
-    _email = json['email'];
-    _firstName = json['first_name'];
-    _lastName = json['last_name'];
-    _avatar = json['avatar'];
-  }
-  int? _id;
-  String? _email;
-  String? _firstName;
-  String? _lastName;
-  String? _avatar;
+  final int? id;
+  final String? email;
+  final String? firstName;
+  final String? lastName;
+  final String? avatar;
 
-  int? get id => _id;
-  String? get email => _email;
-  String? get firstName => _firstName;
-  String? get lastName => _lastName;
-  String? get avatar => _avatar;
+  factory PaginationScreenDl.fromJson(Map<String, dynamic> json) {
+    return PaginationScreenDl(
+      id: json['id'],
+      email: json['email'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      avatar: json['avatar'],
+    );
+  }
 
   Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = _id;
-    map['email'] = _email;
-    map['first_name'] = _firstName;
-    map['last_name'] = _lastName;
-    map['avatar'] = _avatar;
-    return map;
+    return {
+      'id': id,
+      'email': email,
+      'first_name': firstName,
+      'last_name': lastName,
+      'avatar': avatar,
+    };
   }
 }

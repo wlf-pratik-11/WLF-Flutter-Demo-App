@@ -4,22 +4,18 @@ import 'package:dio/dio.dart';
 import 'package:main_app_demo/screens/paginationScreen/pagination_screen_dl.dart';
 
 class PaginationScreenRepo {
-  PaginationScreenRepo();
-
-  String url = "https://reqres.in/api/users?page=";
-
-  var dio = Dio();
+  final Dio dio = Dio();
+  final String url = "https://reqres.in/api/users?page=";
 
   Future<List<PaginationScreenDl>> fetchData(int page) async {
-    List<PaginationScreenDl> lst = [];
-
-    dynamic res = await dio.get(url + page.toString());
-
-    var decodedJson = jsonDecode(res.toString());
-
-    if (decodedJson["data"] is List) {
-      lst = (decodedJson["data"] as List).map((item) => PaginationScreenDl.fromJson(item)).toList();
+    try {
+      final response = await dio.get("$url$page");
+      final data = response.data['data'] as List;
+      return data.map((json) => PaginationScreenDl.fromJson(json)).toList();
+    } catch (e) {
+      print("Failed to load data");
+      return [];
     }
-    return lst;
   }
 }
+

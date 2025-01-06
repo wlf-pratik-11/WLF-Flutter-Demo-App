@@ -4,38 +4,35 @@ import 'package:main_app_demo/screens/paginationScreen/pagination_screen_repo.da
 import 'package:rxdart/rxdart.dart';
 
 class PaginationScreenBloc {
+
+  final PagingController<int, PaginationScreenDl> pagingController =
+  PagingController(firstPageKey: 1);
+  final PaginationScreenRepo repo = PaginationScreenRepo();
+
+  static const int _pageSize = 6;
+
   PaginationScreenBloc() {
-    pagingController.addPageRequestListener((pagekey) {
-      getData(pagekey);
+    pagingController.addPageRequestListener((pageKey) {
+      getData(pageKey);
     });
   }
 
-  PaginationScreenRepo repo = PaginationScreenRepo();
-
-  static const _pageSize = 6;
-  final PagingController<int, PaginationScreenDl> pagingController = PagingController(firstPageKey: 0);
-
-  final paginationScreenBlocController = BehaviorSubject<List<dynamic>>();
-
-  Future<void> getData(int pagekey) async {
+  Future<void> getData(int pageKey) async {
     try {
-      final newItems = await repo.fetchData(pagekey);
+      final newItems = await repo.fetchData(pageKey);
       final isLastPage = newItems.length < _pageSize;
       if (isLastPage) {
-        print(
-            "::::::::::::::::::::::::::::::::::::::::::::::::: is Load : ${newItems.length}:::::::::::::: ${newItems.length}::::::::::::::::::::");
         pagingController.appendLastPage(newItems);
       } else {
-        print(
-            "::::::::::::::::::::::::::::::::::::::::::::::::: is Load not : ${newItems.length}:::::::::::::: ${newItems.length}::::::::::::::::::::");
-        final nextPageKey = pagekey + newItems.length;
+        final nextPageKey = pageKey + 1;
         pagingController.appendPage(newItems, nextPageKey);
       }
     } catch (error) {
       pagingController.error = error;
     }
-    // paginationScreenBlocController.sink.add([]);
-    // List<dynamic> dataList = await repo.fetchData(pagekey);
-    // paginationScreenBlocController.sink.add(dataList);
+  }
+
+  void dispose() {
+    pagingController.dispose();
   }
 }
