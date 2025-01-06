@@ -49,6 +49,7 @@ dependencies:
   dio: any
   shimmer: any
   flutter_content_placeholder: any
+  infinite_scroll_pagination: any
 
 
 dev_dependencies:

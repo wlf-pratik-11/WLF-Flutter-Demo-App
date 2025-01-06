@@ -1,34 +1,25 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:main_app_demo/screens/paginationScreen/pagination_screen_dl.dart';
 
 class PaginationScreenRepo {
   PaginationScreenRepo();
 
-  String limitCount = "1";
-  String url = "https://dummyjson.com/users?limit=";
+  String url = "https://reqres.in/api/users?page=";
 
   var dio = Dio();
 
-  Future<void> fetchData() async {
-    List lst = [];
-    dynamic res = await dio.get(url + limitCount);
-    // print(":::::::::::::::::::::::::DAta of Users :${res[1]["firstName"]}");
-    final Map<String, dynamic> decodedJson = jsonDecode(res.toString());
+  Future<List<PaginationScreenDl>> fetchData(int page) async {
+    List<PaginationScreenDl> lst = [];
 
-    final List<dynamic> users = decodedJson['users'];
-    final List<Map<String, dynamic>> extractedUsers = users.map((user) {
-      return {
-        "firstName": user['firstName'],
-        "lastName": user['lastName'],
-        "maidenName": user['maidenName'],
-        "phone": user['phone'],
-        "email": user['email'],
-        "image": user['image'],
-        "city": user['address']['city']
-      };
-    }).toList();
+    dynamic res = await dio.get(url + page.toString());
 
-    print(extractedUsers);
+    var decodedJson = jsonDecode(res.toString());
+
+    if (decodedJson["data"] is List) {
+      lst = (decodedJson["data"] as List).map((item) => PaginationScreenDl.fromJson(item)).toList();
+    }
+    return lst;
   }
 }
