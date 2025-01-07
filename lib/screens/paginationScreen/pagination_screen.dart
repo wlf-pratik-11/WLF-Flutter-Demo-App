@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
+import 'package:main_app_demo/screens/paginationScreen/DemoDl.dart';
 import 'package:main_app_demo/screens/paginationScreen/pagination_screen_bloc.dart';
-import 'package:main_app_demo/screens/paginationScreen/pagination_screen_dl.dart';
+
 import '../../commons/my_colors.dart';
 
 class PaginationScreen extends StatefulWidget {
@@ -24,9 +26,9 @@ class _PaginationScreenState extends State<PaginationScreen> {
   }
 
   Widget _buildView() {
-    return PagedListView<int, PaginationScreenDl>(
+    return PagedListView<int, Results>(
       pagingController: _bloc.pagingController,
-      builderDelegate: PagedChildBuilderDelegate<PaginationScreenDl>(
+      builderDelegate: PagedChildBuilderDelegate<Results>(
         itemBuilder: (context, item, index) {
           return Padding(
             padding: EdgeInsets.symmetric(
@@ -44,10 +46,9 @@ class _PaginationScreenState extends State<PaginationScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: screenSizeRatio * 0.015),
+                    padding: EdgeInsets.symmetric(horizontal: screenSizeRatio * 0.015),
                     child: Image.network(
-                      item.avatar ?? '',
+                      item.image ?? "",
                       fit: BoxFit.cover,
                       height: screenSizeRatio * 0.42,
                       width: screenSizeRatio * 0.26,
@@ -64,7 +65,7 @@ class _PaginationScreenState extends State<PaginationScreen> {
                         children: [
                           Spacer(),
                           Text(
-                            "${item.firstName} ${item.lastName}",
+                            "Name : ${item.name} ",
                             overflow: TextOverflow.fade,
                             style: TextStyle(
                               color: Colors.white,
@@ -72,9 +73,39 @@ class _PaginationScreenState extends State<PaginationScreen> {
                               fontSize: screenSizeRatio * 0.025,
                             ),
                           ),
-                          SizedBox(height: screenSizeRatio * 0.02),
+                          Spacer(),
                           Text(
-                            "E-mail: ${item.email}",
+                            "Location: ${item.location?.name}",
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: screenSizeRatio * 0.025,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            "Status: ${item.status}",
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: screenSizeRatio * 0.025,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            "Created: ${item.created}",
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: screenSizeRatio * 0.025,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            "Gender: ${item.gender}",
                             overflow: TextOverflow.fade,
                             style: TextStyle(
                               color: Colors.white,
@@ -92,6 +123,25 @@ class _PaginationScreenState extends State<PaginationScreen> {
             ),
           );
         },
+        firstPageProgressIndicatorBuilder: (context) {
+          return Center(
+            child: LoadingAnimationWidget.threeRotatingDots(color: MyColors.darkBlue, size: screenSizeRatio * 0.1),
+          );
+        },
+        firstPageErrorIndicatorBuilder: (context) => const Center(child: Text("Error in Loading First Page")),
+        noMoreItemsIndicatorBuilder: (context) => const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Center(child: Text('Posts are over.!!', style: TextStyle(fontSize: 16.0))),
+        ),
+        noItemsFoundIndicatorBuilder: (context) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Text(
+              'No Item Found To Show..!!!',
+              style: TextStyle(fontSize: screenSizeRatio * 0.03),
+            ),
+          ),
+        ),
       ),
     );
   }

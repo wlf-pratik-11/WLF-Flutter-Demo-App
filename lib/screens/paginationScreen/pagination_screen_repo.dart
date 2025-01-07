@@ -1,21 +1,18 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:main_app_demo/screens/paginationScreen/pagination_screen_dl.dart';
+
+import 'DemoDl.dart';
 
 class PaginationScreenRepo {
   final Dio dio = Dio();
-  final String url = "https://reqres.in/api/users?page=";
+  final String url = "https://rickandmortyapi.com/api/character?page=";
 
-  Future<List<PaginationScreenDl>> fetchData(int page) async {
+  Future<TryDemoDl> fetchData(int page) async {
     try {
       final response = await dio.get("$url$page");
-      final data = response.data['data'] as List;
-      return data.map((json) => PaginationScreenDl.fromJson(json)).toList();
+      return TryDemoDl.fromJson(response.data);
     } catch (e) {
-      print("Failed to load data");
-      return [];
+      print("Failed to load data: $e");
+      return TryDemoDl();
     }
   }
 }
-

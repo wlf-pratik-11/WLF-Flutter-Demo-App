@@ -11,6 +11,7 @@ import 'package:main_app_demo/screens/tabbarDemo/tabbar_screen.dart';
 import '../commons/my_colors.dart';
 import 'changeScreensDemo/content_holder_screen.dart';
 import 'dateTimeScreen/datetime_screen.dart';
+import 'firebaseAuthUsingEmailAndPhoneScreen/firebaseAuthEmailPhone_screen.dart';
 import 'responsiveScreen/responsive_screen.dart';
 
 class MainPage extends StatelessWidget {
@@ -27,6 +28,7 @@ class MainPage extends StatelessWidget {
     {"name": "Responsive Screen", "route": ResponsiveScreen()},
     {"name": "API Call Screen", "route": ApiCallScreen()},
     {"name": "Pagination Screen", "route": PaginationScreen()},
+    {"name": "Login using Email/Phone Screen", "route": FirebaseauthemailphoneScreen()},
   ];
 
   @override

@@ -1,35 +1,31 @@
 class PaginationScreenDl {
   PaginationScreenDl({
     this.id,
-    this.email,
-    this.firstName,
-    this.lastName,
-    this.avatar,
+    this.name,
+    this.image,
+    this.location,
   });
 
   final int? id;
-  final String? email;
-  final String? firstName;
-  final String? lastName;
-  final String? avatar;
+  final String? name;
+  final String? image;
+  final String? location;
 
-  factory PaginationScreenDl.fromJson(Map<String, dynamic> json) {
+  PaginationScreenDl fromJson(Map<String, dynamic> json) {
     return PaginationScreenDl(
       id: json['id'],
-      email: json['email'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      avatar: json['avatar'],
+      name: json['name'],
+      image: json['image'],
+      location: json['location'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'email': email,
-      'first_name': firstName,
-      'last_name': lastName,
-      'avatar': avatar,
+      'name': name,
+      'image': image,
+      'location': location,
     };
   }
 }
