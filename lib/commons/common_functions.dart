@@ -180,3 +180,25 @@ Widget sliderView(String mainTxt, String? subTxt, String? img) {
     ),
   );
 }
+
+Widget darkBlueCommonButton(String Title, {Function()? onPressed, Icon? icons}) {
+  return ElevatedButton.icon(
+    icon: icons,
+    onPressed: onPressed,
+    label: Text(
+      Title,
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: buttonFontsize,
+      ),
+    ),
+    style: ElevatedButton.styleFrom(
+      padding: EdgeInsetsDirectional.symmetric(horizontal: 0, vertical: 10),
+      minimumSize: Size(double.maxFinite, screenSizeRatio * 0.08),
+      backgroundColor: MyColors.darkBlue,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(screenSizeRatio * 0.01)),
+      elevation: 3,
+    ),
+  );
+}

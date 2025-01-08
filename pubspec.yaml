@@ -51,6 +51,8 @@ dependencies:
   flutter_content_placeholder: any
   infinite_scroll_pagination: any
   loading_animation_widget: any
+  firebase_auth: any
+  firebase_core: any
 
 
 dev_dependencies:
