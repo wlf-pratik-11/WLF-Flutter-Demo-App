@@ -1,8 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LoginUsingEmailScreenBloc {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  get user => _auth.currentUser;
+
   final loginUsingEmailScreenBlocController = BehaviorSubject<String>();
   final isPasswordVisible = BehaviorSubject<bool>.seeded(true);
 
@@ -38,6 +43,16 @@ class LoginUsingEmailScreenBloc {
     if (formKey.currentState?.validate() ?? false) {
       return true;
     } else {
+      return false;
+    }
+  }
+
+  Future<bool> login() async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email.text, password: password.text);
+      return true;
+    } on FirebaseAuthException catch (e) {
+      print("Auth Error :$e");
       return false;
     }
   }

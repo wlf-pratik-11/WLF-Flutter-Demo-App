@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/screens/apiCallScreen/api_call_screen.dart';
+import 'package:main_app_demo/screens/firebaseSocialLoginWithGoogle/signin_with_google_screen.dart';
 import 'package:main_app_demo/screens/paginationScreen/pagination_screen.dart';
 import 'package:main_app_demo/screens/sharedPreferencesScreen/shared_preferences_screen.dart';
 import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
@@ -29,6 +30,7 @@ class MainPage extends StatelessWidget {
     {"name": "API Call Screen", "route": ApiCallScreen()},
     {"name": "Pagination Screen", "route": PaginationScreen()},
     {"name": "Login using Email/Phone Screen", "route": FirebaseauthemailphoneScreen()},
+    {"name": "Login using google Screen", "route": SigninWithGoogleScreen()},
   ];
 
   @override

@@ -53,6 +53,7 @@ dependencies:
   loading_animation_widget: any
   firebase_auth: any
   firebase_core: any
+  flutter_otp_text_field: any
 
 
 dev_dependencies:

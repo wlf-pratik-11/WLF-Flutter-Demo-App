@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SignupUsingEmailScreenBloc {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  get user => _auth.currentUser;
+
   final signupUsingEmailScreenBlocController = BehaviorSubject<String>();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -49,6 +53,16 @@ class SignupUsingEmailScreenBloc {
   void isPasswordVisibleFun() {
     isPasswordVisibleCheack = !isPasswordVisibleCheack;
     isPasswordVisible.sink.add(isPasswordVisibleCheack);
+  }
+
+  Future<bool> signUp() async {
+    try {
+      await _auth.createUserWithEmailAndPassword(email: email.text, password: password.text);
+      return true;
+    } on FirebaseAuthException catch (e) {
+      print("Sign Up Failed : $e");
+      return false;
+    }
   }
 
   void dispose() {

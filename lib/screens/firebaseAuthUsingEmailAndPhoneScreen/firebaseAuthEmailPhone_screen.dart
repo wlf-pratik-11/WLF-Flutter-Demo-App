@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/screens/firebaseAuthUsingEmailAndPhoneScreen/authUsingEmail/loginScreen/login_using_email_screen.dart';
 
+import 'authUsingPhone/enterPhoneNumberScreen/login_using_phone_screen.dart';
+
 class FirebaseauthemailphoneScreen extends StatefulWidget {
   const FirebaseauthemailphoneScreen({super.key});
 
@@ -50,7 +52,13 @@ class _FirebaseauthemailphoneScreenState extends State<FirebaseauthemailphoneScr
               size: screenSizeRatio * 0.05,
             ),
             "Login using Phone",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginUsingPhoneScreen(),
+                  ));
+            },
           ),
         ),
       ],

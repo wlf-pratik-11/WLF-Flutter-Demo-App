@@ -25,73 +25,89 @@ class _SignupUsingEmailScreenState extends State<SignupUsingEmailScreen> {
   Widget _buildScreen() {
     return Form(
       key: _bloc.formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: screenSizeRatio * 0.1,
+      child: Expanded(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: screenSizeRatio * 0.1,
+              ),
+              inputField(
+                "Name :",
+                _bloc.name,
+                validator: (value) {
+                  return _bloc.nameValidate(value);
+                },
+              ),
+              inputField(
+                "E-mail :",
+                _bloc.email,
+                validator: (value) {
+                  return _bloc.emailValidate(value);
+                },
+              ),
+              inputField(
+                "Password :",
+                _bloc.password,
+                validator: (value) {
+                  return _bloc.passwordValidate(value);
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: screenSizeRatio * 0.02, vertical: screenSizeRatio * 0.06),
+                child: darkBlueCommonButton(
+                  "Sign Up",
+                  onPressed: () async {
+                    if (_bloc.validateForm()) {
+                      if (await _bloc.signUp()) {
+                        final snakBar = SnackBar(
+                          content: Text(
+                            "Sign Up Succesfully..!!",
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: snakbarFontsize),
+                          ),
+                          backgroundColor: MyColors.darkBlue,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snakBar);
+                        Navigator.pop(context);
+                      } else if (!await _bloc.signUp()) {
+                        final snakBar = SnackBar(
+                          content: Text(
+                            "Invalid Email or Password",
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: snakbarFontsize),
+                          ),
+                          backgroundColor: MyColors.darkBlue,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snakBar);
+                      }
+                    }
+                  },
+                ),
+              ),
+              RichText(
+                text: TextSpan(children: [
+                  TextSpan(
+                      text: "Already have an account ? ",
+                      style: TextStyle(
+                        color: Colors.black38,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: GoogleFonts.nunito().fontFamily,
+                      )),
+                  TextSpan(
+                      text: " Login",
+                      style: TextStyle(
+                          color: MyColors.darkBlue, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.nunito().fontFamily),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pop(context);
+                        }),
+                ]),
+              )
+            ],
           ),
-          inputField(
-            "Name :",
-            _bloc.name,
-            validator: (value) {
-              return _bloc.nameValidate(value);
-            },
-          ),
-          inputField(
-            "E-mail :",
-            _bloc.email,
-            validator: (value) {
-              return _bloc.emailValidate(value);
-            },
-          ),
-          inputField(
-            "Password :",
-            _bloc.password,
-            validator: (value) {
-              return _bloc.passwordValidate(value);
-            },
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenSizeRatio * 0.02, vertical: screenSizeRatio * 0.06),
-            child: darkBlueCommonButton(
-              "Sign Up",
-              onPressed: () {
-                if (_bloc.validateForm()) {
-                  final snakBar = SnackBar(
-                    content: Text(
-                      "Sign Up Succesfully..!!",
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: snakbarFontsize),
-                    ),
-                    backgroundColor: MyColors.darkBlue,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snakBar);
-                  Navigator.pop(context);
-                }
-              },
-            ),
-          ),
-          RichText(
-            text: TextSpan(children: [
-              TextSpan(
-                  text: "Already have an account ? ",
-                  style: TextStyle(
-                    color: Colors.black38,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.nunito().fontFamily,
-                  )),
-              TextSpan(
-                  text: " Login",
-                  style: TextStyle(
-                      color: MyColors.darkBlue, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.nunito().fontFamily),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                      Navigator.pop(context);
-                    }),
-            ]),
-          )
-        ],
+        ),
       ),
     );
   }
