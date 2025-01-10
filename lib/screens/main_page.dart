@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/screens/apiCallScreen/api_call_screen.dart';
 import 'package:main_app_demo/screens/firebaseSocialLoginWithGoogle/signin_with_google_screen.dart';
+import 'package:main_app_demo/screens/firebaseSocialLoginWithGoogle/signin_with_google_screen_bloc.dart';
+import 'package:main_app_demo/screens/main_page_bloc.dart';
 import 'package:main_app_demo/screens/paginationScreen/pagination_screen.dart';
 import 'package:main_app_demo/screens/sharedPreferencesScreen/shared_preferences_screen.dart';
 import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
@@ -15,7 +17,7 @@ import 'dateTimeScreen/datetime_screen.dart';
 import 'firebaseAuthUsingEmailAndPhoneScreen/firebaseAuthEmailPhone_screen.dart';
 import 'responsiveScreen/responsive_screen.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   static const List menuItem = [
@@ -33,6 +35,12 @@ class MainPage extends StatelessWidget {
     {"name": "Login using google Screen", "route": SigninWithGoogleScreen()},
   ];
 
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  MainPageBloc _bloc = MainPageBloc();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,8 +84,25 @@ class MainPage extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: drawerItem(menuItem),
-            )
+              child: drawerItem(MainPage.menuItem),
+            ),
+            TextButton.icon(
+                icon: Icon(
+                  Icons.logout,
+                  color: MyColors.darkBlue,
+                  size: screenSizeRatio * 0.04,
+                ),
+                onPressed: () {
+                  SigninWithGoogleScreenBloc().signOut();
+                  Navigator.pop(context);
+                },
+                label: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "  Logout",
+                    style: TextStyle(fontSize: buttonFontsize, fontWeight: FontWeight.bold, color: MyColors.darkBlue),
+                  ),
+                ))
           ],
         ),
       ),

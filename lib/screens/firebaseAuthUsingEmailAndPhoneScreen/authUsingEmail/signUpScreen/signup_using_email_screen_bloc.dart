@@ -17,6 +17,8 @@ class SignupUsingEmailScreenBloc {
   final isPasswordVisible = BehaviorSubject<bool>.seeded(true);
   bool isPasswordVisibleCheack = true;
 
+  final isLoading = BehaviorSubject<bool>.seeded(false);
+
   String? nameValidate(String value) {
     if (value.isEmpty || value.length < 4) {
       return "Enter your name.!!";
@@ -58,8 +60,10 @@ class SignupUsingEmailScreenBloc {
   Future<bool> signUp() async {
     try {
       await _auth.createUserWithEmailAndPassword(email: email.text, password: password.text);
+      isLoading.sink.add(false);
       return true;
     } on FirebaseAuthException catch (e) {
+      isLoading.sink.add(false);
       print("Sign Up Failed : $e");
       return false;
     }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/commons/my_colors.dart';
-import 'package:main_app_demo/screens/main_page.dart';
+import 'package:main_app_demo/screens/firebaseSocialLoginWithGoogle/signin_with_google_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.nunito().fontFamily,
         appBarTheme: AppBarTheme(color: MyColors.darkBlue),
       ),
-      home: const MainPage(),
+      home: const SigninWithGoogleScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

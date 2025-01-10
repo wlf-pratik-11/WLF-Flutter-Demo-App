@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
+
+import '../enterOtpScreen/enter_otp_screen.dart';
 
 class LoginUsingPhoneScreenBloc {
   FirebaseAuth _auth = FirebaseAuth.instance;
   final loginUsingPhoneScreenBlocController = BehaviorSubject<String>();
+  final isLoading = BehaviorSubject<bool>.seeded(false);
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -17,14 +19,24 @@ class LoginUsingPhoneScreenBloc {
     }
   }
 
-  Future<bool> getOTp() async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+91 ${phoneNumber.text}',
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) {},
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
+  Future<bool> getOTp(BuildContext context) async {
+    print("Gettttt OTP MEthoddd ============>>>>>>>>>>>>");
+    await _auth.verifyPhoneNumber(
+        phoneNumber: "+91 ${phoneNumber.text}",
+        verificationCompleted: (phoneAuthCredential) {},
+        verificationFailed: (error) {
+          print("verificationFailed=================================>>>>>>>>>>>>>>>>>>$error");
+        },
+        codeSent: (verificationId, forceResendingToken) {
+          isLoading.sink.add(false);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EnterOtpScreen(verificationId, phoneNumber.text),
+              ));
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {},
+        timeout: Duration(seconds: 60));
     return true;
   }
 

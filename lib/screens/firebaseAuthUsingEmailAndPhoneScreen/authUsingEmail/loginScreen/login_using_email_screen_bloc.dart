@@ -10,6 +10,7 @@ class LoginUsingEmailScreenBloc {
 
   final loginUsingEmailScreenBlocController = BehaviorSubject<String>();
   final isPasswordVisible = BehaviorSubject<bool>.seeded(true);
+  final isLoading = BehaviorSubject<bool>.seeded(false);
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -50,14 +51,17 @@ class LoginUsingEmailScreenBloc {
   Future<bool> login() async {
     try {
       await _auth.signInWithEmailAndPassword(email: email.text, password: password.text);
+      isLoading.sink.add(false);
       return true;
     } on FirebaseAuthException catch (e) {
       print("Auth Error :$e");
+      isLoading.sink.add(false);
       return false;
     }
   }
 
   void dispose() {
-    loginUsingEmailScreenBlocController.close();
+    email.clear();
+    password.clear();
   }
 }

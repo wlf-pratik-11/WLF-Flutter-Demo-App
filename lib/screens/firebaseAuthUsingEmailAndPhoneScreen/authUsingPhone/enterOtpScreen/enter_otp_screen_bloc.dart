@@ -1,24 +1,36 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
+
+import '../../../../commons/common_functions.dart';
+import '../../../../commons/my_colors.dart';
 
 class EnterOtpScreenBloc {
   final EnterOtpScreenBlocController = BehaviorSubject<String>();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final isLoading = BehaviorSubject<bool>.seeded(false);
 
   TextEditingController OTP = TextEditingController();
 
-  String? OTPValidate() {
-    if (OTP.text.isEmpty || OTP.toString().length < 6) {
-      return "Enter Valid OTP";
-    } else if (OTP.text == "123456") {
-      return "OTP Verified";
-    }
-  }
-
-  bool validateForm() {
-    if (formKey.currentState?.validate() ?? false) {
+  Future<bool> otpVeryfy(String verificationId, BuildContext context) async {
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: OTP.text.trim());
+      await FirebaseAuth.instance.signInWithCredential(credential).then(
+        (value) {
+          isLoading.sink.add(false);
+          final snakBar = SnackBar(
+            content: Text(
+              "Login via OTP Succesfull..!!",
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: snakbarFontsize),
+            ),
+            backgroundColor: MyColors.darkBlue,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snakBar);
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
+      );
       return true;
-    } else {
+    } catch (e) {
       return false;
     }
   }
