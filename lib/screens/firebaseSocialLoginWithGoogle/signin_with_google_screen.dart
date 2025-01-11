@@ -45,8 +45,7 @@ class _SigninWithGoogleScreenState extends State<SigninWithGoogleScreen> {
                 height: screenSizeRatio * 0.06,
               ),
               Image(
-                image: NetworkImage(
-                    "https://media.licdn.com/dms/image/v2/C560BAQHyHE_cbVGa4A/company-logo_200_200/company-logo_200_200/0/1630666191516/whitelabelfox_logo?e=2147483647&v=beta&t=oaefFKsMGp9KThjiyuMCSl8T1Ki5i1GKm93w2pqYDS8"),
+                image: AssetImage("assets/images/wlfLogo.png"),
                 height: screenSizeRatio * 0.15,
               ),
               SizedBox(

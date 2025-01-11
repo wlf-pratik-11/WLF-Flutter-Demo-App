@@ -1,8 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/screens/apiCallScreen/api_call_screen.dart';
-import 'package:main_app_demo/screens/firebaseSocialLoginWithGoogle/signin_with_google_screen.dart';
-import 'package:main_app_demo/screens/firebaseSocialLoginWithGoogle/signin_with_google_screen_bloc.dart';
 import 'package:main_app_demo/screens/main_page_bloc.dart';
 import 'package:main_app_demo/screens/paginationScreen/pagination_screen.dart';
 import 'package:main_app_demo/screens/sharedPreferencesScreen/shared_preferences_screen.dart';
@@ -15,6 +14,7 @@ import '../commons/my_colors.dart';
 import 'changeScreensDemo/content_holder_screen.dart';
 import 'dateTimeScreen/datetime_screen.dart';
 import 'firebaseAuthUsingEmailAndPhoneScreen/firebaseAuthEmailPhone_screen.dart';
+import 'firebaseCrudOperation/firebase_crud_screen.dart';
 import 'responsiveScreen/responsive_screen.dart';
 
 class MainPage extends StatefulWidget {
@@ -32,7 +32,7 @@ class MainPage extends StatefulWidget {
     {"name": "API Call Screen", "route": ApiCallScreen()},
     {"name": "Pagination Screen", "route": PaginationScreen()},
     {"name": "Login using Email/Phone Screen", "route": FirebaseauthemailphoneScreen()},
-    {"name": "Login using google Screen", "route": SigninWithGoogleScreen()},
+    {"name": "Firebase Database CRUD Screen", "route": FirebaseCrudScreen()},
   ];
 
   @override
@@ -41,12 +41,14 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   MainPageBloc _bloc = MainPageBloc();
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: commonAppBar("Main Page"),
       drawer: Drawer(
+        backgroundColor: Colors.white,
         width: drawerWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -63,10 +65,17 @@ class _MainPageState extends State<MainPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 // Centers text vertically
                 children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(user!.photoURL.toString()),
+                    radius: 25,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
-                    "White Label Fox",
+                    user?.displayName ?? "White Label Fox",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Colors.white, // Ensures text is visible on top of the image
                     ),
@@ -74,7 +83,7 @@ class _MainPageState extends State<MainPage> {
                   SizedBox(height: 8),
                   // Adds space between the two text elements
                   Text(
-                    "wlfpratiktank@gmail.com",
+                    user?.email ?? "wlfpratiktank@gmail.com",
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white, // Ensures the email text is visible
@@ -93,14 +102,18 @@ class _MainPageState extends State<MainPage> {
                   size: screenSizeRatio * 0.04,
                 ),
                 onPressed: () {
-                  SigninWithGoogleScreenBloc().signOut();
+                  _bloc.signOut();
                   Navigator.pop(context);
                 },
                 label: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "  Logout",
-                    style: TextStyle(fontSize: buttonFontsize, fontWeight: FontWeight.bold, color: MyColors.darkBlue),
+                    style: TextStyle(
+                        fontSize: buttonFontsize,
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.darkBlue,
+                        backgroundColor: Colors.transparent),
                   ),
                 ))
           ],
