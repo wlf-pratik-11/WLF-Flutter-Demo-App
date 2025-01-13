@@ -1,7 +1,9 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:main_app_demo/screens/firebaseCrudOperation/brandWisePhoneList/addPhone/add_phone_screen_dl.dart';
 import 'package:main_app_demo/screens/firebaseCrudOperation/firebase_crud_screen_bloc.dart';
+
+import '../../../../commons/common_functions.dart';
 
 class AddPhoneScreenBloc {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -11,12 +13,57 @@ class AddPhoneScreenBloc {
   TextEditingController description = TextEditingController();
   TextEditingController imgUrl = TextEditingController();
 
-  void submitData(int index, BuildContext context) async {
+  void submitDataOrEdit(int index, BuildContext context, {BigInt? itemKey}) async {
     final ref = await FirebaseDatabase.instance.ref(FirebaseCrudScreenBloc().brandLogoList[index].brandName);
-    await ref.child("${DateTime.now().millisecondsSinceEpoch}").set(
-        (AddPhoneScreenDl(phoneName: phoneName.text, price: price.text, description: description.text, imgUrl: imgUrl.text)
-            .toJson()));
+    if (itemKey != null) {
+      await ref
+          .child("${itemKey}")
+          .update(
+              (AddPhoneScreenDl(phoneName: phoneName.text, price: price.text, description: description.text, imgUrl: imgUrl.text)
+                  .toJson()))
+          .then(
+        (value) {
+          var snakBar = SnackBar(
+            content: Text(
+              "Record Edited Successfully..!!",
+              style: TextStyle(color: Colors.white, fontSize: snakbarFontsize, fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Colors.black,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snakBar);
+        },
+      );
+    } else {
+      await ref
+          .child("${DateTime.now().millisecondsSinceEpoch}")
+          .set((AddPhoneScreenDl(phoneName: phoneName.text, price: price.text, description: description.text, imgUrl: imgUrl.text)
+              .toJson()))
+          .then(
+        (value) {
+          var snakBar = SnackBar(
+            content: Text(
+              "Record Added Successfully..!!",
+              style: TextStyle(color: Colors.white, fontSize: snakbarFontsize, fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Colors.black,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snakBar);
+        },
+      );
+    }
     Navigator.pop(context);
+  }
+
+  void getData(BigInt itemKey, int index) async {
+    DatabaseReference ref = FirebaseDatabase.instance.ref(FirebaseCrudScreenBloc().brandLogoList[index].brandName);
+    DatabaseEvent event = await ref.child("$itemKey").once();
+    DataSnapshot snapshot = event.snapshot;
+    print("Map Data =======================>>>>>>>>>>>>>>>${snapshot.value}");
+    Map data = AddPhoneScreenDl.fromJson(snapshot.value).toJson();
+    phoneName.text = data["phoneName"] ?? '';
+    price.text = data["price"] ?? '';
+    description.text = data["description"] ?? '';
+    imgUrl.text = data["imgUrl"] ?? '';
   }
 
   String? validatePhoneName() {

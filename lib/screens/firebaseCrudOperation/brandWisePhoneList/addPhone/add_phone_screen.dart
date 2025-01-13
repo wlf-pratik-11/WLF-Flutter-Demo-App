@@ -5,7 +5,8 @@ import 'package:main_app_demo/screens/firebaseCrudOperation/firebase_crud_screen
 
 class AddPhoneScreen extends StatefulWidget {
   final index;
-  const AddPhoneScreen(this.index, {super.key});
+  final itemKey;
+  AddPhoneScreen(this.index, {this.itemKey, super.key});
 
   @override
   State<AddPhoneScreen> createState() => _AddPhoneScreenState();
@@ -15,8 +16,11 @@ class _AddPhoneScreenState extends State<AddPhoneScreen> {
   AddPhoneScreenBloc _bloc = AddPhoneScreenBloc();
   @override
   Widget build(BuildContext context) {
+    (widget.itemKey != null ? _bloc.getData(widget.itemKey, widget.index) : null);
     return Scaffold(
-      appBar: commonAppBar("Add ${FirebaseCrudScreenBloc().brandLogoList[widget.index].brandName} Phone"),
+      appBar: widget.itemKey == null
+          ? commonAppBar("Add ${FirebaseCrudScreenBloc().brandLogoList[widget.index].brandName} Phone")
+          : commonAppBar("Edit ${FirebaseCrudScreenBloc().brandLogoList[widget.index].brandName} Phone"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,9 +65,11 @@ class _AddPhoneScreenState extends State<AddPhoneScreen> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: screenSizeRatio * 0.05, horizontal: screenSizeRatio * 0.03),
-            child: darkBlueCommonButton("Submit", onPressed: () {
+            child: darkBlueCommonButton(widget.itemKey == null ? "Submit" : "Submit Edited Data", onPressed: () {
               if (_bloc.validateForm()) {
-                return _bloc.submitData(widget.index, context);
+                return widget.itemKey == null
+                    ? _bloc.submitDataOrEdit(widget.index, context)
+                    : _bloc.submitDataOrEdit(widget.index, context, itemKey: widget.itemKey);
               }
             }),
           )
