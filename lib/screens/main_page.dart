@@ -4,6 +4,7 @@ import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/screens/apiCallScreen/api_call_screen.dart';
 import 'package:main_app_demo/screens/main_page_bloc.dart';
 import 'package:main_app_demo/screens/paginationScreen/pagination_screen.dart';
+import 'package:main_app_demo/screens/pushnotificationScreen/pushnotification_demo_screen.dart';
 import 'package:main_app_demo/screens/sharedPreferencesScreen/shared_preferences_screen.dart';
 import 'package:main_app_demo/screens/showImageFromCamera/show_image_from_camera_and_gallery_screen.dart';
 import 'package:main_app_demo/screens/signUpScreen/signup_screen.dart';
@@ -33,6 +34,7 @@ class MainPage extends StatefulWidget {
     {"name": "Pagination Screen", "route": PaginationScreen()},
     {"name": "Login using Email/Phone Screen", "route": FirebaseauthemailphoneScreen()},
     {"name": "Firebase Database CRUD Screen", "route": FirebaseCrudScreen()},
+    {"name": "Push Notification Demo Screen", "route": PushnotificationDemoScreen()},
   ];
 
   @override

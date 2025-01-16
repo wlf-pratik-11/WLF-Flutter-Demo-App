@@ -56,6 +56,10 @@ dependencies:
   flutter_otp_text_field: any
   google_sign_in: any
   firebase_database: any
+  firebase_messaging: any
+  googleapis_auth: any
+  overlay_support: any
+  flutter_local_notifications: any
 
 
 dev_dependencies:

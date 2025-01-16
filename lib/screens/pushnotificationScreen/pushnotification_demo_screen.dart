@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
+import 'package:main_app_demo/screens/pushnotificationScreen/pushnotification_demo_screen_bloc.dart';
+import 'package:main_app_demo/screens/pushnotificationScreen/pushnotification_service.dart';
 
 class PushnotificationDemoScreen extends StatefulWidget {
   const PushnotificationDemoScreen({super.key});
@@ -9,6 +11,7 @@ class PushnotificationDemoScreen extends StatefulWidget {
 }
 
 class _PushnotificationDemoScreenState extends State<PushnotificationDemoScreen> {
+  PushnotificationDemoScreenBloc _bloc = PushnotificationDemoScreenBloc();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +19,14 @@ class _PushnotificationDemoScreenState extends State<PushnotificationDemoScreen>
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Text("Pushnotification Demo")],
+        children: [
+          TextButton(
+            onPressed: () {
+              PushnotificationService().showNotification();
+            },
+            child: Center(child: Text("Pushnotification Demo")),
+          ),
+        ],
       ),
     );
   }
