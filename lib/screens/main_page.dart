@@ -16,6 +16,7 @@ import 'changeScreensDemo/content_holder_screen.dart';
 import 'dateTimeScreen/datetime_screen.dart';
 import 'firebaseAuthUsingEmailAndPhoneScreen/firebaseAuthEmailPhone_screen.dart';
 import 'firebaseCrudOperation/firebase_crud_screen.dart';
+import 'googleMapScreen/google_map_screen.dart';
 import 'responsiveScreen/responsive_screen.dart';
 
 class MainPage extends StatefulWidget {
@@ -35,6 +36,7 @@ class MainPage extends StatefulWidget {
     {"name": "Login using Email/Phone Screen", "route": FirebaseauthemailphoneScreen()},
     {"name": "Firebase Database CRUD Screen", "route": FirebaseCrudScreen()},
     {"name": "Push Notification Demo Screen", "route": PushnotificationDemoScreen()},
+    {"name": "Google Map Demo Screen", "route": GoogleMapScreen()},
   ];
 
   @override

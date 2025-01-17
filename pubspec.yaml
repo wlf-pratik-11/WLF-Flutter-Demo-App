@@ -60,6 +60,10 @@ dependencies:
   googleapis_auth: any
   overlay_support: any
   flutter_local_notifications: any
+  google_maps_flutter: any
+  geolocator: any
+  geocoding : any
+
 
 
 dev_dependencies:
