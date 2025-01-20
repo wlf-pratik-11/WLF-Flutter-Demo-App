@@ -63,6 +63,7 @@ dependencies:
   google_maps_flutter: any
   geolocator: any
   geocoding : any
+  uuid: any
 
 
 
