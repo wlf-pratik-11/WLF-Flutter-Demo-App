@@ -7,14 +7,13 @@ import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
-import 'LocationDetailOfPlaceIdDl.dart';
-import 'LocationSuggetionDl.dart';
+import '../../googleMapScreen/mapScreen/LocationDetailOfPlaceIdDl.dart';
+import '../../googleMapScreen/mapScreen/LocationSuggetionDl.dart';
 
-class GoogleMapScreenBloc {
-  GoogleMapScreenBloc() {
+class ChooseLocationFromMapScreenBloc {
+  ChooseLocationFromMapScreenBloc() {
     getUserCurrentLocation();
   }
-
   late GoogleMapController mapController;
 
   TextEditingController searchLocation = TextEditingController();
@@ -116,8 +115,10 @@ class GoogleMapScreenBloc {
         new LatLng(geometry?.location?.lat ?? currentPosition.latitude, geometry?.location?.lng ?? currentPosition.longitude);
   }
 
-  void confirmLocation() async {
+  void confirmLocation(bool isFromLocation) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setString("yourLocation", searchLocation.text);
+    isFromLocation == true
+        ? await pref.setString("fromLocation", searchLocation.text)
+        : await pref.setString("toLocation", searchLocation.text);
   }
 }

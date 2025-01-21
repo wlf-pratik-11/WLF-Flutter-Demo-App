@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
-import 'package:main_app_demo/commons/my_colors.dart';
 
-import 'LocationSuggetionDl.dart';
-import 'google_map_screen_bloc.dart';
+import '../../../commons/my_colors.dart';
+import '../../googleMapScreen/mapScreen/LocationSuggetionDl.dart';
+import 'choose_location_from_map_screen_bloc.dart';
 
-class GoogleMapScreen extends StatefulWidget {
-  const GoogleMapScreen({Key? key}) : super(key: key);
+class ChooseLocationFromMapScreen extends StatefulWidget {
+  final bool isFromLocation;
+  const ChooseLocationFromMapScreen({super.key, required this.isFromLocation});
 
   @override
-  State<GoogleMapScreen> createState() => _GoogleMapScreenState();
+  State<ChooseLocationFromMapScreen> createState() => _ChooseLocationFromMapScreenState();
 }
 
-class _GoogleMapScreenState extends State<GoogleMapScreen> {
-  final GoogleMapScreenBloc _bloc = GoogleMapScreenBloc();
+class _ChooseLocationFromMapScreenState extends State<ChooseLocationFromMapScreen> {
+  ChooseLocationFromMapScreenBloc _bloc = ChooseLocationFromMapScreenBloc();
   List<Predictions>? searchSuggestions = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: commonAppBar("Google Map Screen"),
+      appBar: commonAppBar("Select Location From Map"),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -125,7 +125,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: screenSizeRatio * 0.03, vertical: screenSizeRatio * 0.04),
             child: darkBlueCommonButton("Confirm Location", onPressed: () {
-              _bloc.confirmLocation();
+              _bloc.confirmLocation(widget.isFromLocation);
               Navigator.pop(context);
             },
                 icons: Icon(

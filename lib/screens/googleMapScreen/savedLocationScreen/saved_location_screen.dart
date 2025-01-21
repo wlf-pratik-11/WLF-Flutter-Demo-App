@@ -19,6 +19,7 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _bloc.getConfirmLocation();
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
@@ -148,23 +149,28 @@ class _SavedLocationScreenState extends State<SavedLocationScreen> {
                           ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: screenSizeRatio * 0.03, vertical: screenSizeRatio * 0.01),
-                          child: ListTile(
-                            trailing: Icon(
-                              Icons.navigate_next,
-                              color: MyColors.darkBlue,
-                              size: screenSizeRatio * 0.05,
-                            ),
-                            tileColor: MyColors.darkBlue.withOpacity(0.05),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(10)),
-                            leading: Icon(
-                              Icons.my_location_outlined,
-                              color: MyColors.darkBlue,
-                              size: screenSizeRatio * 0.04,
-                            ),
-                            title: Text(
-                              "Get Your Location",
-                              style: TextStyle(
-                                  color: MyColors.darkBlue, fontSize: screenSizeRatio * 0.03, fontWeight: FontWeight.bold),
+                          child: InkWell(
+                            onTap: () {
+                              _bloc.getUserCurrentLocation();
+                            },
+                            child: ListTile(
+                              trailing: Icon(
+                                Icons.navigate_next,
+                                color: MyColors.darkBlue,
+                                size: screenSizeRatio * 0.05,
+                              ),
+                              tileColor: MyColors.darkBlue.withOpacity(0.05),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(10)),
+                              leading: Icon(
+                                Icons.my_location_outlined,
+                                color: MyColors.darkBlue,
+                                size: screenSizeRatio * 0.04,
+                              ),
+                              title: Text(
+                                "Get Your Location",
+                                style: TextStyle(
+                                    color: MyColors.darkBlue, fontSize: screenSizeRatio * 0.03, fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ),

@@ -64,6 +64,7 @@ dependencies:
   geolocator: any
   geocoding : any
   uuid: any
+  flutter_polyline_points: any
 
 
 

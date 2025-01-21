@@ -16,6 +16,7 @@ import 'changeScreensDemo/content_holder_screen.dart';
 import 'dateTimeScreen/datetime_screen.dart';
 import 'firebaseAuthUsingEmailAndPhoneScreen/firebaseAuthEmailPhone_screen.dart';
 import 'firebaseCrudOperation/firebase_crud_screen.dart';
+import 'googleMapRouteScreen/select_location_screen.dart';
 import 'googleMapScreen/savedLocationScreen/saved_location_screen.dart';
 import 'responsiveScreen/responsive_screen.dart';
 
@@ -37,6 +38,7 @@ class MainPage extends StatefulWidget {
     {"name": "Firebase Database CRUD Screen", "route": FirebaseCrudScreen()},
     {"name": "Push Notification Demo Screen", "route": PushnotificationDemoScreen()},
     {"name": "Google Map Demo Screen", "route": SavedLocationScreen()},
+    {"name": "Select Route Screen", "route": SelectLocationScreen()},
   ];
 
   @override

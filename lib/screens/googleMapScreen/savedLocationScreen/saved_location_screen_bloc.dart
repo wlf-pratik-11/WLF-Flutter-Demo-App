@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -76,6 +77,29 @@ class SavedLocationScreenBloc {
 
   void confirmLocation() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    yourLocationController.sink.add(searchLocation.text);
+    pref.setString("yourLocation", searchLocation.text);
+    String savedLocationPrf = await pref.getString("yourLocation") ?? "No Location Found..!!";
+    yourLocationController.sink.add(savedLocationPrf);
+    searchLocation.text = "";
+  }
+
+  void getConfirmLocation() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String scaedLocationPrf = await pref.getString("yourLocation") ?? "No Location Found..!!";
+    yourLocationController.sink.add(scaedLocationPrf);
+  }
+
+  Future<void> getUserCurrentLocation() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+      return;
+    }
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    currentPosition = LatLng(position.latitude, position.longitude);
+    List<Placemark> location = await placemarkFromCoordinates(position.latitude, position.longitude);
+    searchLocation.text =
+        "${location[0].street},${location[0].thoroughfare}, ${location[0].subLocality}, ${location[0].locality}, ${location[0].administrativeArea}, ${location[0].country}";
   }
 }
