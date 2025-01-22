@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:main_app_demo/commons/common_functions.dart';
 import 'package:main_app_demo/screens/googleMapRouteScreen/chooseLocationFromMapScreen/choose_location_from_map_screen.dart';
 import 'package:main_app_demo/screens/googleMapRouteScreen/showRouteScreen/show_route_screen.dart';
@@ -135,10 +136,10 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                                                   maxLines: 2,
                                                 ),
                                                 onTap: () async {
-                                                  _bloc.isFromLocation.sink.add(false);
                                                   _bloc.fromLocation.text = searchSuggestions?[index].description ?? "";
                                                   await _bloc.getLatLonFromPlaceID(searchSuggestions?[index].placeId ?? "");
                                                   _bloc.showSuggestionsController.sink.add(false);
+                                                  _bloc.isFromLocation.sink.add(false);
                                                 },
                                               );
                                             },
@@ -315,8 +316,8 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
                                 return ShowRouteScreen(
-                                  fromLatLng: _bloc.fromLatLng,
-                                  toLatLng: _bloc.toLatLng,
+                                  fromLatLng: _bloc.fromLatLng ?? LatLng(0, 0),
+                                  toLatLng: _bloc.toLatLng ?? LatLng(0, 0),
                                 );
                               },
                             ));

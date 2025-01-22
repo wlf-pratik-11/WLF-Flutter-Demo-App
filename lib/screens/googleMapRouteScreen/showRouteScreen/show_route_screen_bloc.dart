@@ -44,6 +44,9 @@ class ShowRouteScreenBloc {
     LatLenList.add(toLatLng);
 
     addPolyLine(LatLenList);
+    for (var i in LatLenList) {
+      print("LateLan List Data ::::::::::::::${i}");
+    }
 
     addMarker(formLatLng, "Origin", BitmapDescriptor.defaultMarker);
     addMarker(toLatLng, "Destination", BitmapDescriptor.defaultMarker);

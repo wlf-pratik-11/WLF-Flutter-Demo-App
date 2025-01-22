@@ -15,8 +15,8 @@ class SelectLocationScreenBloc {
 
   TextEditingController fromLocation = TextEditingController();
   TextEditingController toLocation = TextEditingController();
-  LatLng fromLatLng = LatLng(56.324293441187315, 38.13961947281509);
-  LatLng toLatLng = LatLng(56.324293441187315, 38.13961947281509);
+  LatLng? fromLatLng;
+  LatLng? toLatLng;
 
   var uuid = new Uuid();
   String? _sessionToken;
@@ -44,9 +44,9 @@ class SelectLocationScreenBloc {
     Geometry? geometry = locationDetails.result?.geometry;
     currentPosition =
         new LatLng(geometry?.location?.lat ?? currentPosition.latitude, geometry?.location?.lng ?? currentPosition.longitude);
+    print("getLatLonFromPlaceID currentPosition::::::${currentPosition}");
     isFromLocation.value == true
-        ? (fromLatLng =
-            new LatLng(geometry?.location?.lat ?? currentPosition.latitude, geometry?.location?.lng ?? currentPosition.longitude))
+        ? (fromLatLng = new LatLng(currentPosition.latitude, currentPosition.longitude))
         : (toLatLng = new LatLng(
             geometry?.location?.lat ?? currentPosition.latitude, geometry?.location?.lng ?? currentPosition.longitude));
     print("getLatLonFromPlaceID:::::::::::${fromLatLng}:::::::::::::::${toLatLng}");
